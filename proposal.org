@@ -1,0 +1,21 @@
+* Project proposal
+  Name: Nathan Bhat, Marcus Granström
+
+* Name of the app
+  QuakeSee
+
+* Short description
+  The application will display earthquake activity around the world in real time (updated every 5 minutes). The earthquake activity will be rendered on a map from google maps. The user will be able to specify criterias for which earthquakes that should be shown (magnitude etc...).
+  
+* Framework(s) that will be used
+  ReactJS, Firebase.
+
+* API that will be used
+  https://earthquake.usgs.gov/ & https://developers.google.com/maps/documentation/javascript/
+
+* What data will your app work with (which ones come from API and which one is your app specific)
+  Both the map and the earthquake data will be provided via the api's. The userdata will be provided from the backend and will contain settings and saved earthquakes etc... 
+  
+* Quick mock-up/prototype (paper drawing is fine) of the screens your app will have
+
+  https://app.moqups.com/marcus.granstroem@gmail.com/Rl581gpcpK/view
