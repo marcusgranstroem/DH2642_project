@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Glyphicon } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
 
 class App extends Component {
   render() {
@@ -16,9 +14,10 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> 
-	<Button bsSize="xsmall" bsStyle="danger" className="pull-right" onClick={console.log('Hello Nathan Bath')}>
-          <Glyphicon glyph="remove" />
-        </Button>
+	<div>
+	  <p>Hello</p>
+	  <Button bsStyle="danger">Take this action</Button>
+	</div>
       </div>
     );
   }
