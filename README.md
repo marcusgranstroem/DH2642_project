@@ -1,5 +1,5 @@
-# DH2642_project
-QuakeSee
+# QuakeSee
+For your earthquake information, on the fly.
 
 ## Deadlines
 
