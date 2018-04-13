@@ -28,4 +28,5 @@ For your earthquake information, on the fly.
 
 ## Libraries
 
-- React bootsrap (buttons etc)
+- React bootstrap (buttons etc)
+- React google maps: https://tomchentw.github.io/react-google-maps/#usage--configuration
