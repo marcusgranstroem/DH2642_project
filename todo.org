@@ -1,0 +1,10 @@
+* Mid-project
+** Deploy on firebase
+** README
+** Application: [%]
+- [ ] Map from google
+- [ ] Hardcoded earthquakes
+- [ ] Be able to move the map around
+- [ ] 
+- [ ] 
+  
