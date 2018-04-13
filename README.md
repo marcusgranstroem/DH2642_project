@@ -23,6 +23,7 @@ For your earthquake information, on the fly.
 - that you have setup the basic framework code (e.g. the skeleton)
 - have initial layout of your app
 - showing the data from at least one API call
+
 **Note:** *many of you had user login as part of your app proposal. This is not crucial, especially not for the mid-project review, so leave that for the later time in the project (expect, of course, if it's crucial for getting the data for your app like I think it is in Spotify case).* 
 
 ## Libraries
