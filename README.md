@@ -11,7 +11,7 @@ For your earthquake information, on the fly.
 
 ## What to submit for Mid-project review
 
-- A link to deployed/running app. You can deploy the app on Heroku (Länkar till en externa sida.)Länkar till en externa sida., Firebase (Länkar till en externa sida.)Länkar till en externa sida., Stackblitz (Länkar till en externa sida.)Länkar till en externa sida., or any other server that anybody can easily access when doing the review. Setup this as soon as possible as it takes time and if you start at the just before the deadline you might be late.
+- A link to deployed/running app. You can deploy the app on **Heroku**, **Firebase**, **Stackblitz**, or any other server that anybody can easily access when doing the review. Setup this as soon as possible as it takes time and if you start at the just before the deadline you might be late.
 - A link to your git repository
 - A README file (in English) in your Git repository detailing:
 - Short description of your project
