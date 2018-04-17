@@ -11,7 +11,7 @@ const initalState = {
 function earthquakes(state = initalState, action) {
     switch (action.type) {
     case RECIEVE_EARTHQUAKES:
-	
+	return Object.assign({}, state, {earthquakes: action.earthquakes});
 	break;
     default:
 	return state;
