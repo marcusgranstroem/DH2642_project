@@ -1,6 +1,6 @@
-import logo from '../logo.svg'
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import logo from '../logo.svg';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 
 const Beamer = ({lat, lng, magnitude}) => (
