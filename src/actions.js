@@ -8,12 +8,12 @@ function requestEarthquakes() {
   };
 }
 
-export const RECEIVE_EARTHQUAKES = 'RECEIVE_EARTHQUAKES';
-function receiveEarthquakes(json) {
+export const RECIEVE_EARTHQUAKES = 'RECIEVE_EARTHQUAKES';
+function recieveEarthquakes(json) {
   return {
-      type: RECEIVE_EARTHQUAKES,
+      type: RECIEVE_EARTHQUAKES,
       earthquakes: json.features,
-      receivedAt: Date.now()
+      recieveAt: Date.now()
   };
 }
 
@@ -36,6 +36,6 @@ export function fetchEarthquakes(start, end, magnitude=0) {
 	  )
 	  .then(json =>
 		// Here, we update the app state with the results of the API call.
-		dispatch(receiveEarthquakes(json)));
+		dispatch(recieveEarthquakes(json)));
     };
 }
