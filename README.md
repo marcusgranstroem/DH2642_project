@@ -30,3 +30,11 @@ For your earthquake information, on the fly.
 
 - React bootstrap (buttons etc)
 - React google maps: https://tomchentw.github.io/react-google-maps/#usage--configuration
+
+## Config
+Place file config.js in the src folder.
+```js
+const google_map_api_key = 'AIzaSyDl62UgL38iveIldQdulXWrvTL2Jc4SYxY';
+
+export default google_map_api_key;
+```
