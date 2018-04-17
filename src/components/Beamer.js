@@ -1,20 +1,23 @@
 import logo from '../logo.svg'
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
-class Beamer extends Component {
 
-  render() {
-    return (
-      <div className="Beamer">
-        <img src={logo} className="Beamer-sign" alt="beamer" style={{
-          position: 'absolute',
-          width: this.props.magnitude,
-          height:this.props.magnitude,
-          left: - this.props.magnitude / 2,
-          top: -this.props.magnitude / 2,}}/>
-      </div>
-    );
-  }
+const Beamer = ({lat, lng, magnitude}) => (
+    <div className="Beamer">
+    <img src={logo} className="Beamer-sign" alt="beamer" style={{
+        position: 'absolute',
+        width: magnitude,
+        height: magnitude,
+        left: -magnitude / 2,
+        top: -magnitude / 2,}}/>
+    </div>
+)
+
+Beamer.propTypes = {
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
+  magnitude: PropTypes.number.isRequired
 }
 
 export default Beamer;
