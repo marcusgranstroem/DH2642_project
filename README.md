@@ -34,7 +34,7 @@ For your earthquake information, on the fly.
 ## Config
 Place file config.js in the src folder.
 ```js
-const google_map_api_key = ***REMOVED***;
+const google_map_api_key = '';
 
 export default google_map_api_key;
 ```
