@@ -8,7 +8,8 @@ const initalState = {
     earthquakes: []
 };
 
-function earthquakeReducer(state = initalState, action) {
+function earthquakeReducer(state, action) {
+    if(typeof state === 'undefined') state = initalState;
     switch (action.type) {
     case RECIEVE_EARTHQUAKES:
 	return Object.assign({}, state, {earthquakes: action.earthquakes});

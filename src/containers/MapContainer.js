@@ -3,11 +3,11 @@ import Map from '../components/Map.js';
 
 const mapStateToProps = (state) => {
     return {
-	quakes: state.earthquakes
+	quakes: state.earthquakeReducer.earthquakes
     };
 };
 
-const Earthquakes = connect(
+export default connect(
   mapStateToProps
 )(Map);
 
