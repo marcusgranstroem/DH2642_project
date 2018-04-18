@@ -32,6 +32,11 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
 	
 	dispatch(requestEarthquakes(start, end, magnitude));
 
+	if(magnitude < 0) {
+	    console.error("Magnitude was set to" + magnitude);
+	    magnitude = 0;
+	}
+	
 	// API only handles timeformat in ISO8601
 	if(start === 0 || end === 0) {
 	    if(start === 0) {
