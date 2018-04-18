@@ -3,8 +3,8 @@ import Banner from '../components/Banner.js';
 import { fetchEarthquakes } from '../actions';
 
 const mapStateToProps = (state) => {
-    return {
-    };
+  return {
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -12,6 +12,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Banner);

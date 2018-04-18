@@ -14,22 +14,20 @@ import thunkMiddleware from 'redux-thunk';
 const loggerMiddleware = createLogger();
 
 const store = createStore(
-    quakeSeeReducer,
-    applyMiddleware(
-	thunkMiddleware, // lets us dispatch() functions
-	loggerMiddleware // neat middleware that logs actions
-    )
+  quakeSeeReducer,
+  applyMiddleware(
+	  thunkMiddleware, // lets us dispatch() functions
+	  loggerMiddleware // neat middleware that logs actions
+  )
 );
 
-
 store.dispatch(fetchEarthquakes());
-	      
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
 
 registerServiceWorker();

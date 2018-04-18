@@ -20,7 +20,7 @@ const Map = ({center={lat:0, lng:0}, zoom=1, quakes}) => (
 		   )
 	}
         </GoogleMapReact>
-      </div>
+    </div>
 );
 
 export default Map;

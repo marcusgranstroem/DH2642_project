@@ -5,15 +5,14 @@ import './css/App.css';
 
 class App extends Component {
 
-
-    render() {
-	return (
+  render() {
+	  return (
 	    <div className="App">
-              <BannerContainer/>
-              <MapContainer/>
+        <BannerContainer/>
+        <MapContainer/>
 	    </div>
-	);
-    }
+	  );
+  }
 }
 
 export default App;

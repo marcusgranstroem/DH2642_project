@@ -1,28 +1,28 @@
 import { combineReducers } from 'redux';
 
 import {
-    RECIEVE_EARTHQUAKES,
-    REQUEST_EARTHQUAKES
+  RECIEVE_EARTHQUAKES,
+  REQUEST_EARTHQUAKES
 } from './actions';
 
 const initalState = {
-    earthquakes: []
+  earthquakes: []
 };
 
 function earthquakeReducer(state, action) {
-    if(typeof state === 'undefined') state = initalState;
-    switch (action.type) {
+  if(typeof state === 'undefined') state = initalState;
+  switch (action.type) {
     case REQUEST_EARTHQUAKES:
-	return state;
+	    return state;
     case RECIEVE_EARTHQUAKES:
-	return Object.assign({}, state, {earthquakes: action.earthquakes});
+	    return Object.assign({}, state, {earthquakes: action.earthquakes});
     default:
-	return state;
-    }
+	    return state;
+  }
 }
 
 const quakeSeeReducer = combineReducers({
-    earthquakeReducer
+  earthquakeReducer
 });
 
 export default quakeSeeReducer;
