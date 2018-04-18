@@ -13,15 +13,15 @@ const Banner = ({fetchEarthquakes}) => (
     <FormGroup className="Search-bar">
         <label>
             Minimum Magnitude:
-            <FormControl inputRef={(ref) => {this.magnitude = ref}} type="number" placeholder="Mag" onChange={() => fetchEarthquakes(new Date(this.starttime.value).toISOString(), new Date(this.endtime.value).toISOString(), this.magnitude.value)}/>
+            <FormControl inputRef={(ref) => {this.magnitude = ref}} type="number" placeholder="Mag" onChange={() => fetchEarthquakes(this.starttime.value , this.endtime.value, this.magnitude.value)}/>
         </label>
         <label>
             Start Time:
-            <FormControl inputRef={(ref) => {this.starttime = ref}} type="date" onChange={() => fetchEarthquakes(new Date(this.starttime.value).toISOString(), new Date(this.endtime.value).toISOString(), this.magnitude.value)}/>
+            <FormControl inputRef={(ref) => {this.starttime = ref}} type="date" onChange={() => fetchEarthquakes(this.starttime.value , this.endtime.value, this.magnitude.value)}/>
         </label>
         <label>
             End Time:
-            <FormControl inputRef={(ref) => {this.endtime = ref}} type="date" onChange={() => fetchEarthquakes(new Date(this.starttime.value).toISOString(), new Date(this.endtime.value).toISOString(), this.magnitude.value)}/>
+            <FormControl inputRef={(ref) => {this.endtime = ref}} type="date" onChange={() => fetchEarthquakes(this.starttime.value , this.endtime.value, this.magnitude.value)}/>
         </label>
     </FormGroup>{' '}
     </Navbar.Form>
