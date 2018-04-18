@@ -8,18 +8,17 @@ const initalState = {
     earthquakes: []
 };
 
-function earthquakes(state = initalState, action) {
+function earthquakeReducer(state = initalState, action) {
     switch (action.type) {
     case RECIEVE_EARTHQUAKES:
 	return Object.assign({}, state, {earthquakes: action.earthquakes});
-	break;
     default:
 	return state;
     }
 }
 
 const quakeSee = combineReducers({
-    earthquakes
+    earthquakeReducer
 });
 
 export default quakeSee;

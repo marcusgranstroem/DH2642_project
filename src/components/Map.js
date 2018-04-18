@@ -12,6 +12,8 @@ class Map extends Component {
   };
 
   render() {
+      console.log("thihihi");
+      console.log(this.props.quakes);
     return (
       <div className="Map" style={{ height: '88.9vh', width: '100%' }}>
         <GoogleMapReact
