@@ -1,7 +1,7 @@
-import React from 'react';
-import GoogleMapReact from 'google-map-react';
-import google_map_api_key from '../config.js';
 import Beamer from './Beamer.js';
+import google_map_api_key from '../config.js';
+import GoogleMapReact from 'google-map-react';
+import React from 'react';
 
 const Map = ({center={lat:0, lng:0}, zoom=1, quakes}) => (
     <div className="Map" style={{ height: '88.9vh', width: '100%' }}>
