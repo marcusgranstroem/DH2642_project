@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../logo.svg';
-import { Navbar, Form, FormGroup, FormControl } from 'react-bootstrap';
+import { Navbar, FormGroup, FormControl } from 'react-bootstrap';
 
 const Banner = ({start, end, mag, fetchEarthquakes}) => (
 <header className="App-header">
@@ -11,9 +11,18 @@ const Banner = ({start, end, mag, fetchEarthquakes}) => (
     </div>
     <Navbar.Form pullRight>
     <FormGroup className="Search-bar">
-        <FormControl type="number" placeholder="Mag" />
-        <FormControl type="date" />
-        <FormControl type="date" />
+        <label>
+            Minimum Magnitude:
+            <FormControl inputRef={(ref) => {this.magnitude = ref}} type="number" placeholder="Mag" onChange={() => fetchEarthquakes(new Date(this.starttime.value).toISOString(), new Date(this.endtime.value).toISOString(), this.magnitude.value)}/>
+        </label>
+        <label>
+            Start Time:
+            <FormControl inputRef={(ref) => {this.starttime = ref}} type="date" onChange={() => fetchEarthquakes(new Date(this.starttime.value).toISOString(), new Date(this.endtime.value).toISOString(), this.magnitude.value)}/>
+        </label>
+        <label>
+            End Time:
+            <FormControl inputRef={(ref) => {this.endtime = ref}} type="date" onChange={() => fetchEarthquakes(new Date(this.starttime.value).toISOString(), new Date(this.endtime.value).toISOString(), this.magnitude.value)}/>
+        </label>
     </FormGroup>{' '}
     </Navbar.Form>
 </header>

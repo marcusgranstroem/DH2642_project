@@ -15,5 +15,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Banner);
