@@ -10,3 +10,6 @@ deploy:
 
 sass-start:
 	sass --watch scss:css
+
+dependencies:
+	yarn install
