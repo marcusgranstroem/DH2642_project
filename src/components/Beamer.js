@@ -7,8 +7,8 @@ const Beamer = ({lat, lng, magnitude}) => (
     <img src={logo} className="Beamer-sign" alt="beamer" style={{
       position: 'absolute',
       width: magnitude,
-		  height: magnitude,
-		  left: -magnitude / 2,
+      height: magnitude,
+      left: -magnitude / 2,
       top: -magnitude / 2}}
 	  />
   </div>
