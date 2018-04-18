@@ -1,0 +1,14 @@
+import { connect } from 'react-redux'
+import Link from '../components/Map.js'
+
+const mapStateToProps = state => i({
+    quakes: state.earthquakes
+});
+
+con
+const Earthquakes = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Link)
+
+export default Earthquakes 
