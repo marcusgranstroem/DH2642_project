@@ -22,9 +22,8 @@ const store = createStore(
 );
 
 
-store
-    .dispatch(fetchEarthquakes('20170102', '20170103',2))
-    .then(() => console.log(store.getState()));
+store.dispatch(fetchEarthquakes());
+	      
 
 ReactDOM.render(
     <Provider store={store}>

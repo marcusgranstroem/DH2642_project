@@ -24,18 +24,30 @@ export function invalidateEarthquakes() {
     };
 }
 
-export function fetchEarthquakes(start, end, magnitude=0) {
+export function fetchEarthquakes(start=0, end=0, magnitude=0) {
     return dispatch => {
 	
 	dispatch(requestEarthquakes());
 
-      return fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${start}&endtime=${end}&minmagnitude=${magnitude}`)
-	  .then(
-              response => response.json(),
-              error => console.log('An error occurred.', error)
-	  )
-	  .then(json =>
-		// Here, we update the app state with the results of the API call.
-		dispatch(recieveEarthquakes(json)));
+	// API only handles timeformat in ISO8601
+	if(start === 0 || end === 0) {
+	    if(start === 0) {
+		let d = new Date((new Date().valueOf() - 1000*3600*24));
+		start = d.toISOString(); 
+	    }
+	    if(end === 0) {
+		let d = new Date();
+		end = d.toISOString();
+	    }
+	}
+	
+	return fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${start}&endtime=${end}&minmagnitude=${magnitude}`)
+	    .then(
+		response => response.json(),
+		error => console.log('An error occurred.', error)
+	    )
+	    .then(json =>
+		  // Here, we update the app state with the results of the API call.
+		  dispatch(recieveEarthquakes(json)));
     };
 }
