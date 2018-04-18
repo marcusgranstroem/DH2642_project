@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../logo.svg';
 import { Navbar, Form, FormGroup, FormControl } from 'react-bootstrap';
 
-const Banner = ({fetchEarthquakes}) => (
+const Banner = ({start, end, mag, fetchEarthquakes}) => (
 <header className="App-header">
     <h2 className="Developed-by">Developed by Nathan Bhat <br />& Marcus Granström</h2>
     <div className="App-logotitle">
