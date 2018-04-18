@@ -6,17 +6,14 @@ import {
 } from './actions';
 
 const initalState = {
-    earthquakes: [],
-    start: null,
-    end: null,
-    mag: null
+    earthquakes: []
 };
 
 function earthquakeReducer(state, action) {
     if(typeof state === 'undefined') state = initalState;
     switch (action.type) {
     case REQUEST_EARTHQUAKES:
-	return Object.assign({}, state, {start: action.start, end: action.start, mag: action.mag});
+	return state;
     case RECIEVE_EARTHQUAKES:
 	return Object.assign({}, state, {earthquakes: action.earthquakes});
     default:

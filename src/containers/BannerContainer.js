@@ -4,9 +4,6 @@ import { fetchEarthquakes } from '../actions';
 
 const mapStateToProps = (state) => {
     return {
-	start: state.earthquakeReducer.start,
-	end: state.earthquakeReducer.end,
-	mag: state.earthquakeReducer.mag
     };
 };
 

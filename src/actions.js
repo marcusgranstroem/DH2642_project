@@ -1,12 +1,9 @@
 import fetch from 'cross-fetch';
 
 export const REQUEST_EARTHQUAKES = 'REQUEST_EARTHQUAKES';
-function requestEarthquakes(start, end, magnitude) {
+function requestEarthquakes() {
   return {
       type: REQUEST_EARTHQUAKES,
-      start: start,
-      end: end,
-      mag: magnitude
       // TODO add loader
   };
 }
@@ -30,7 +27,7 @@ export function invalidateEarthquakes() {
 export function fetchEarthquakes(start=0, end=0, magnitude=0) {
     return dispatch => {
 	
-	dispatch(requestEarthquakes(start, end, magnitude));
+	dispatch(requestEarthquakes());
 
 	if(magnitude < 0) {
 	    console.error("Magnitude was set to" + magnitude);
