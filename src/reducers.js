@@ -17,8 +17,8 @@ function earthquakeReducer(state = initalState, action) {
     }
 }
 
-const quakeSee = combineReducers({
+const quakeSeeReducer = combineReducers({
     earthquakeReducer
 });
 
-export default quakeSee;
+export default quakeSeeReducer;
