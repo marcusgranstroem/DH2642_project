@@ -7,7 +7,20 @@
 .App-logo {
   height: 40px; }
 
+.Developed-by {
+  align-self: center;
+  font-size: 0.8em; }
+
+.Search-bar {
+  display: flex; }
+
+.Small-search {
+  width: 64px;
+  margin: 16px; }
+
 .App-header {
+  display: flex;
+  justify-content: space-between;
   background-color: #222;
   height: 70px;
   padding: 5px;
