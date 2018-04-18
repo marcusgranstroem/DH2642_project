@@ -10,6 +10,13 @@ const Map = ({center={lat:0, lng:0}, zoom=1, quakes}) => (
           defaultCenter={center}
           defaultZoom={zoom}
         >
+	{quakes.map((earthquake) =>
+		    <Beamer
+		    lat={earthquake.geometry.coordinates[0]}
+		    lat={earthquake.geometry.coordinates[1]}
+		    magnitude={earthquake.properties.mag}
+		    />)}
+	  
           <Beamer lat={59} lng={30} magnitude={40}/>
           <Beamer lat={50} lng={10} magnitude={60}/>
           <Beamer lat={62} lng={0} magnitude={120}/>
