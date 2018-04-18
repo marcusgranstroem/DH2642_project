@@ -1,9 +1,11 @@
 import logo from './logo.svg';
+import { fetchEarthquakes } from './actions';
 import MapContainer from './containers/MapContainer.js';
 import React, { Component } from 'react';
 import { Navbar, Form, FormGroup, FormControl } from 'react-bootstrap';
 
 import './css/App.css';
+
 
 
 class App extends Component {
