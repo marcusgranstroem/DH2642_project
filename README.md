@@ -1,40 +1,57 @@
 # QuakeSee
 For your earthquake information, on the fly.
 
-## Deadlines
+## What is this?
+Our project is to visualize earthquakes. You will be able to scroll on a map and see earthquakes based on a search. The available search paramaters are minimum magnitude, start time and end time (referring to a time interval in which earthquakes could have happened).
 
-- Project proposal due **March 23rd**
-- Mid-project evaluation due **April 20th**
-- Project submission due **May 9th**
-- Individual self-reflection due **May 18th**
-- Project demo some time in **week 20 or 21**
+### What we have done
+- Scrollable map
+- Searchbars (That work)
+- Visible Points of Earthquakes
+- Visible Points Size scaled to magnitude
 
-## What to submit for Mid-project review
+### What we plan to do
+- Styling
+- Log in and User Creation
+- Visible points should be clickable. When clicked information about the earthquake will appear.
+- Users can leave a report for each earthquake. An example of a report is some text about what happened and if the person needs help. What the reports will contain is undecided as of now.
+- Users will be able to see other people's reports when selecting an earthquake.
 
-- A link to deployed/running app. You can deploy the app on **Heroku**, **Firebase**, **Stackblitz**, or any other server that anybody can easily access when doing the review. Setup this as soon as possible as it takes time and if you start at the just before the deadline you might be late.
-- A link to your git repository
-- A README file (in English) in your Git repository detailing:
-  - Short description of your project
-  -  What you have done
-  - What you still plan to do
-  - Your project file structure (short description/purpose of each file)
+## Link to project
 
-### Your projects are naturally at various stages of completeness, but the minimum we expect that you have by deadline is:
-- that you have setup the basic framework code (e.g. the skeleton)
-- have initial layout of your app
-- showing the data from at least one API call
+https://quakesee.firebaseapp.com/
+  
+## File Structure
 
-**Note:** *many of you had user login as part of your app proposal. This is not crucial, especially not for the mid-project review, so leave that for the later time in the project (expect, of course, if it's crucial for getting the data for your app like I think it is in Spotify case).* 
+App.js is the main application that creates all the components. We then have a containers folder that includes the container compononents. We also have a components folder that contains presentational components and other components.
+
+Container components:
+- BannerContainer (Container for the header/banner)
+- MapContainer (Container for the Map)
+
+Presentational components:
+- Banner (Presentational for Banner and includes Search bars)
+- Map (Presentational for Map)
+- Beamer (Presentational for visible points AKA Earthquakes)
+
+There is also an scss folder that uses sass for styling, however right now it just contains the default css files when making a react project. 
+
+Since we use Redux we have the actions and reducers files that do API calls and handle the store. Read more about Redux to understand what they are.
 
 ## Libraries
 
 - React bootstrap (buttons etc)
 - React google maps: https://tomchentw.github.io/react-google-maps/#usage--configuration
 
-## Config
+## Config (If you want to run the project locally)
+Go into the src folder and run `make dependencies`
+
 Place file config.js in the src folder.
+
 ```js
 const google_map_api_key = '';
 
 export default google_map_api_key;
 ```
+
+Then use `npm-start` to start the application. (Further set up and dependency installation may be required, we reccomend using the link instead).
