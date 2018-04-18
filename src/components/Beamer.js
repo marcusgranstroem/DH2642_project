@@ -10,7 +10,7 @@ const Beamer = ({lat, lng, magnitude}) => (
       height: magnitude,
       left: -magnitude / 2,
       top: -magnitude / 2}}
-	  />
+    />
   </div>
 );
 
