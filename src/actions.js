@@ -26,7 +26,8 @@ export function invalidateEarthquakes() {
 
 export function fetchEarthquakes(start=0, end=0, magnitude=0) {
     return dispatch => {
-	
+	// Limit amount of return values
+	var limit = 200;
 	dispatch(requestEarthquakes());
 
 	if(magnitude < 0) {
@@ -46,7 +47,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
 	    }
 	}
 	
-	return fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${start}&endtime=${end}&minmagnitude=${magnitude}`)
+	return fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${start}&endtime=${end}&minmagnitude=${magnitude}&limit=${limit}`)
 	    .then(
 		response => response.json(),
 		error => console.log('An error occurred.', error)
