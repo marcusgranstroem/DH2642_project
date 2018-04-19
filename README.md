@@ -44,7 +44,7 @@ Since we use Redux we have the actions and reducers files that do API calls and 
 - React google maps: https://tomchentw.github.io/react-google-maps/#usage--configuration
 
 ## Config (If you want to run the project locally)
-Go into the src folder and run `make dependencies`
+In the root of the project; run `make dependencies`
 
 Place file config.js in the src folder (If you don't have an API key for google maps then it will still work, you will just get warnings).
 
