@@ -2,6 +2,10 @@ import logo from '../logo.svg';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* Style is used to set coordinate alignement from center of the object,
+ * instead of the top left corner.
+ */
+
 const Beamer = ({lat, lng, magnitude}) => (
   <div className="Beamer">
     <img src={logo} className="Beamer-sign" alt="beamer" style={{
