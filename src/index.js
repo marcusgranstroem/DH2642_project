@@ -10,12 +10,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import thunkMiddleware from 'redux-thunk';
+import createDebounce from 'redux-debounced';
 
 const loggerMiddleware = createLogger();
 
 const store = createStore(
   quakeSeeReducer,
   applyMiddleware(
+      createDebounce(), //Allows for debouncing
 	  thunkMiddleware, // lets us dispatch() functions
 	  loggerMiddleware // neat middleware that logs actions
   )

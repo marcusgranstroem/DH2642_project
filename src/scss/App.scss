@@ -11,6 +11,10 @@
 // Import modules:
 @import './modules/all.scss';
 
+html {
+    background-color: #222;
+}
+
 .App {
   text-align: center;
 }
