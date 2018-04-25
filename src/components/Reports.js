@@ -5,6 +5,8 @@ import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import NewReport from './NewReport.js';
 
+const uuidv1 = require('uuid/v1');
+
 export default class Reports extends React.Component {
 
   state = {
@@ -40,7 +42,7 @@ export default class Reports extends React.Component {
         reports.push(<p>No user reports yet.</p>);
     else //example
         reports.push(
-            <div>
+            <div key={uuidv1()}>
                 <ListItem primaryText="Nathan Bhat" secondaryText={<p>I was there.</p>} disabled={true}/>
                 <Divider />
             </div>
