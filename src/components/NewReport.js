@@ -24,7 +24,7 @@ export default class NewReport extends React.Component {
              multiLine={true}
              rows={3}
 	     value={this.state.textFieldValue}
-	     onChange={this._handleTextFieldChange}
+	     onChange={(e) => this._handleTextFieldChange(e)}
              />
            <FlatButton
              label="Submit"
