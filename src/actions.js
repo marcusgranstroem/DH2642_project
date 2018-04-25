@@ -38,21 +38,17 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   	if(start !== 0 && start !=="") {
   	  let d = new Date(start);
   	  start = d.toISOString();
-  	  console.log(start);
   	} else {
   	  let d = new Date((new Date().valueOf() - 1000*3600*24));
   	  start = d.toISOString();
-  	  console.log(start);
   	}
   	if(end !== 0 && end !=="") {
   	  let e = new Date(end);
   	  end = e.toISOString();
-  	  console.log(end);
 
   	} else {
   	  let d = new Date();
   	  end = d.toISOString();
-  	  console.log(end);
   	}
 
   	return fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${start}&endtime=${end}&minmagnitude=${magnitude}&limit=${limit}`)
@@ -65,7 +61,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
     )
     .catch(
         (error) => {dispatch(invalidateEarthquakes());
-        console.log('An error occurred.', error)}
+        console.error('An error occurred.', error)}
     );
   };
   thunk.meta = {
