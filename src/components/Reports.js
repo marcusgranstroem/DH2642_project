@@ -52,9 +52,8 @@ export default class Reports extends React.Component {
                 <NewReport userName={"Marcus Granström"} submitNew={this.handleSubmit}/>
                 <Divider />
             </div>
-        )
+        );
 
-      console.log("Hello this is me, the result. Open is now: " + this.props.open);
       
     return (
         <Dialog

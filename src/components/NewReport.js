@@ -3,43 +3,36 @@ import TextField from 'material-ui/TextField';
 import {List, ListItem} from 'material-ui/List';
 import FlatButton from 'material-ui/FlatButton';
 
-const NewReport = ({userName, submitNew}) => (
-    <form>
-        <p>{userName}</p>
-        <TextField
-            floatingLabelText="Write your Earthquake Experience."
-            multiLine={true}
-            rows={3}
-        />
-        <FlatButton
-          label="Submit"
-          primary={true}
-          onClick={() => submitNew()}
-        />
-    </form>
-);
-
-export default NewReport;
-
-
-/*
-<ListItem
-    primaryText={userName}
-    children={
-        <TextField
-            floatingLabelText="Write your Earthquake Experience."
-            multiLine={true}
-            rows={3}
-            inputRef={this.message}
-        />
+export default class NewReport extends React.Component {
+    constructor(props) {
+	super(props);
+	this.state = {textFieldValue: ''};
     }
-    secondaryText={
-        <FlatButton
-          label="Submit"
-          primary={true}
-          onClick={() => submitNew(this.message.value)}
-        />
+
+    _handleTextFieldChange = (e) => {
+        this.setState({
+            textFieldValue: e.target.value
+        });
     }
-    disabled={true}
-/>
-*/
+
+ render() {
+     return (
+	 <form>
+           <p>{this.props.userName}</p>
+           <TextField
+             floatingLabelText="Write your Earthquake Experience."
+             multiLine={true}
+             rows={3}
+	     value={this.state.textFieldValue}
+	     onChange={this._handleTextFieldChange}
+             />
+           <FlatButton
+             label="Submit"
+             primary={true}
+             onClick={() => this.props.submitNew(this.state.textFieldValue)}
+             />
+	 </form>
+     );
+ }   
+}
+
