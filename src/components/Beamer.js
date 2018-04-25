@@ -1,4 +1,5 @@
 import logo from '../logo.svg';
+import EarthquakeInfoConainer from '../containers/EarthquakeInfoContainer.js';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -15,6 +16,7 @@ const Beamer = ({lat, lng, magnitude}) => (
       left: -magnitude / 2,
       top: -magnitude / 2}}
     />
+    <EarthquakeInfoConainer/>
   </div>
 );
 
