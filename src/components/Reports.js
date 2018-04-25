@@ -11,14 +11,6 @@ export default class Reports extends React.Component {
     writing: false
   };
 
-//  handleOpen = () => {
-//    this.setState({open: true});
-//  };
-//
-//  handleClose = () => {
-//    this.setState({open: false});
-//  };
-
   handleWriting = () => {
     this.setState({writing: true});
   };
@@ -33,12 +25,13 @@ export default class Reports extends React.Component {
       <FlatButton
         label="Close"
         secondary={true}
-        onClick={this.handleClose}
+        onClick={this.props.close}
       />,
       <FlatButton
         label="Write New"
         primary={true}
         onClick={this.handleWriting}
+	disabled={this.state.writing}
       />,
     ];
 
@@ -69,8 +62,6 @@ export default class Reports extends React.Component {
           actions={actions}
           modal={true}
           open={this.props.open}
-	  // TODO
-          onRequestClose={this.handleClose}
           autoScrollBodyContent={true}
           >
           <List>

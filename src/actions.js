@@ -106,3 +106,11 @@ export function fetchUserReports(quakeId) {
     };
     return thunk;
 }
+
+export function closeUserReports() {
+    const thunk = dispatch => {
+	
+	dispatch(closeReports());
+    };
+    return thunk;
+}
