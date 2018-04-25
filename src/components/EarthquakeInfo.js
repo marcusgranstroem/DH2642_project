@@ -4,7 +4,7 @@ import React from 'react';
 
 const EarthquakeInfo = ({name, lat, long, mag, date }) => (
     <div className="Earthquake-info">
-      <Menu>
+      <Menu width={300}>
     	<MenuItem primaryText={'Place: '} secondaryText={name} disabled={true}/>
         <MenuItem primaryText={'Latitude: '} secondaryText={lat} disabled={true}/>
         <MenuItem primaryText={'Longitude: '} secondaryText={long} disabled={true}/>

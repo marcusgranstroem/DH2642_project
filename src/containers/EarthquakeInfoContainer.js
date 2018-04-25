@@ -11,10 +11,14 @@ const mapStateToProps = (state, ownProps) => {
 	    break;
 	}
     }
+    var title = earthquake.properties.title.replace(/M.*- ?/i, "");
+    if (title.length > 30) {
+	title = title.substring(0, 30) + "...";
+    }
 
     let realDate = new Date(earthquake.properties.time);
   return {
-      name: earthquake.properties.title,
+      name: title,
       lat: earthquake.geometry.coordinates[1],
       long: earthquake.geometry.coordinates[0],
       mag: earthquake.properties.mag,
