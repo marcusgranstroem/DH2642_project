@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 	}
     }
     var title = earthquake.properties.title.replace(/M.*- ?/i, "");
-    if (title.length > 30) {
-	title = title.substring(0, 30) + "...";
+    if (title.length > 32) {
+	title = title.substring(0, 32) + "...";
     }
 
     let realDate = new Date(earthquake.properties.time);
