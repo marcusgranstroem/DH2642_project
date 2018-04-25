@@ -29,12 +29,12 @@ const store = createStore(
 store.dispatch(fetchEarthquakes());
 
 ReactDOM.render(
-  <Provider store={store}>
-    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-        <App />
-    </MuiThemeProvider>
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={store}>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+	<App />
+      </MuiThemeProvider>
+    </Provider>,
+    document.getElementById('root')
 );
 
 registerServiceWorker();
