@@ -11,7 +11,7 @@ const Map = ({center={lat:0, lng:0}, zoom=4, options={minZoom: 4, maxZoom: 13, s
 	<ReportsContainer/>
         <GoogleMapReact
           bootstrapURLKeys={{ key: google_map_api_key }}
-          defaultCenter={center}
+          center={center}
           defaultZoom={zoom}
           options={options}
         >
