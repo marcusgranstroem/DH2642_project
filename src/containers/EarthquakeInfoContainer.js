@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
 	let tmp = state.earthquakeReducer.earthquakes[i];
 	if(tmp.properties.ids === ownProps.quakeId) {
 	    earthquake = tmp;
+	    break;
 	}
     }
 
