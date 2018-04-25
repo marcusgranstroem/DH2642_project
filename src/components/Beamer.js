@@ -3,7 +3,7 @@ import EarthquakeInfoContainer from '../containers/EarthquakeInfoContainer.js';
 import React from 'react';
 import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
 
-/* 
+/*
  * Style is used to set coordinate alignement from center of the object,
  * instead of the top left corner.
  * This component holds a state to provide info whether the earthquake info
@@ -14,28 +14,28 @@ export default class Beamer extends React.Component {
 
     constructor(props) {
 	super(props);
-	
+
 	this.state = {
 	    open: false
-	};  
+	};
     }
-    
+
     handleClick = (event) => {
 	// This prevents ghost click.
 	event.preventDefault();
-	
+
 	this.setState({
 	    open: true,
 	    anchorEl: event.currentTarget
 	});
     };
-    
+
     handleRequestClose = () => {
 	this.setState({
 	    open: false
 	});
     };
-    
+
     render() {
 	return (
 	    <div className="Beamer">
@@ -47,13 +47,13 @@ export default class Beamer extends React.Component {
 		   top: -this.props.magnitude / 2}}
 		   />
               <Popover
-		open={this.state.open}
-		anchorEl={this.state.anchorEl}
-		anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-		targetOrigin={{horizontal: 'left', vertical: 'top'}}
-		onRequestClose={this.handleRequestClose}
-		animation={PopoverAnimationVertical}
-		>
+            		open={this.state.open}
+            		anchorEl={this.state.anchorEl}
+            		anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+            		targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            		onRequestClose={this.handleRequestClose}
+            		animation={PopoverAnimationVertical}
+            		>
 		<EarthquakeInfoContainer quakeId={this.props.id}/>
               </Popover>
 
@@ -61,4 +61,3 @@ export default class Beamer extends React.Component {
 	);
     }
 }
- 
