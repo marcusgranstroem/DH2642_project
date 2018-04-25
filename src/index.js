@@ -11,6 +11,9 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import thunkMiddleware from 'redux-thunk';
 import createDebounce from 'redux-debounced';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
 const loggerMiddleware = createLogger();
 
@@ -27,7 +30,9 @@ store.dispatch(fetchEarthquakes());
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <App />
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
