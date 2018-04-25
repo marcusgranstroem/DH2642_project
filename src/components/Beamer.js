@@ -1,10 +1,7 @@
 import logo from '../logo.svg';
-//import EarthquakeInfo from '../components/EarthquakeInfo.js';
+import EarthquakeInfoContainer from '../containers/EarthquakeInfoContainer.js';
 import React from 'react';
-//import PropTypes from 'prop-types';
 import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
 
 /* 
  * Style is used to set coordinate alignement from center of the object,
@@ -16,12 +13,12 @@ import MenuItem from 'material-ui/MenuItem';
 export default class Beamer extends React.Component {
 
     constructor(props) {
-    super(props);
-
-    this.state = {
-      open: false
-    };  
-  }
+	super(props);
+	
+	this.state = {
+	    open: false
+	};  
+    }
     
     handleClick = (event) => {
 	// This prevents ghost click.
@@ -32,7 +29,7 @@ export default class Beamer extends React.Component {
 	    anchorEl: event.currentTarget
 	});
     };
-
+    
     handleRequestClose = () => {
 	this.setState({
 	    open: false
@@ -57,12 +54,7 @@ export default class Beamer extends React.Component {
 		onRequestClose={this.handleRequestClose}
 		animation={PopoverAnimationVertical}
 		>
-		<Menu>
-		  <MenuItem primaryText="Refresh" />
-		  <MenuItem primaryText="Help &amp; feedback" />
-		  <MenuItem primaryText="Settings" />
-		  <MenuItem primaryText="Sign out" />
-		</Menu>
+		<EarthquakeInfoContainer quakeId={this.props.id}/>
               </Popover>
 
 	    </div>

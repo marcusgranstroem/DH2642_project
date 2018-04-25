@@ -14,6 +14,7 @@ const Map = ({center={lat:0, lng:0}, zoom=4, options={minZoom: 4, maxZoom: 13}, 
 	{quakes.map((earthquake) =>
 		    <Beamer
 		    key={earthquake.properties.ids}
+		    id={earthquake.properties.ids}
 		    lat={earthquake.geometry.coordinates[1]}
 		    lng={earthquake.geometry.coordinates[0]}
 		    magnitude={earthquake.properties.mag * 20}
