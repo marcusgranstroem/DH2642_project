@@ -25,7 +25,7 @@ export function invalidateEarthquakes() {
 }
 
 export function fetchEarthquakes(start=0, end=0, magnitude=0) {
-  return dispatch => {
+  const thunk = dispatch => {
   	// Limit amount of return values
   	var limit = 200;
   	dispatch(requestEarthquakes());
@@ -63,4 +63,11 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   		// Here, we update the app state with the results of the API call.
   		dispatch(recieveEarthquakes(json)));
   };
+  thunk.meta = {
+      debounce: {
+          time: 400,
+          key: 'SEARCH'
+      }
+  };
+  return thunk;
 }
