@@ -8,17 +8,16 @@ import NewReport from './NewReport.js';
 export default class Reports extends React.Component {
 
   state = {
-    open: true,
     writing: false
   };
 
-  handleOpen = () => {
-    this.setState({open: true});
-  };
-
-  handleClose = () => {
-    this.setState({open: false});
-  };
+//  handleOpen = () => {
+//    this.setState({open: true});
+//  };
+//
+//  handleClose = () => {
+//    this.setState({open: false});
+//  };
 
   handleWriting = () => {
     this.setState({writing: true});
@@ -62,22 +61,22 @@ export default class Reports extends React.Component {
             </div>
         )
 
+      console.log("Hello this is me, the result. Open is now: " + this.props.open);
+      
     return (
-      <div>
-        <FlatButton label="User Reports" onClick={this.handleOpen} />
         <Dialog
           title="User Reports"
           actions={actions}
           modal={true}
-          open={this.state.open}
+          open={this.props.open}
+	  // TODO
           onRequestClose={this.handleClose}
           autoScrollBodyContent={true}
-        >
-        <List>
+          >
+          <List>
             {reports}
-        </List>
+          </List>
         </Dialog>
-      </div>
     );
   }
 }

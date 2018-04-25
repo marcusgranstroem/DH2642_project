@@ -76,3 +76,33 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   };
   return thunk;
 }
+
+export const REQUEST_REPORTS = 'REQUEST_REPORTS';
+function requestReports() {
+  return {
+    type: REQUEST_REPORTS
+  };
+}
+
+export const RECIEVE_REPORTS = 'RECIEVE_REPORTS';
+function recieveReports() {
+  return {
+    type: RECIEVE_REPORTS
+  };
+}
+
+export const CLOSE_REPORTS = 'CLOSE_REPORTS';
+function closeReports() {
+  return {
+    type: CLOSE_REPORTS
+  };
+}
+
+export function fetchUserReports(quakeId) {
+    const thunk = dispatch => {
+	
+	dispatch(requestReports());
+	dispatch(recieveReports());
+    };
+    return thunk;
+}

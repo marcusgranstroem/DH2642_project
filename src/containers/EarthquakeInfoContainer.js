@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import EarthquakeInfo from '../components/EarthquakeInfo.js';
+import { fetchUserReports } from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
     var earthquake = 0;
@@ -22,10 +23,18 @@ const mapStateToProps = (state, ownProps) => {
       lat: earthquake.geometry.coordinates[1],
       long: earthquake.geometry.coordinates[0],
       mag: earthquake.properties.mag,
-      date: realDate.toLocaleDateString() + " " + realDate.toLocaleTimeString()
+      date: realDate.toLocaleDateString() + " " + realDate.toLocaleTimeString(),
+      quakeId: ownProps.quakeId
   };
 };
 
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchUserReports: (quakeId) => dispatch(fetchUserReports(quakeId))
+});
+
+
 export default connect(
-  mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(EarthquakeInfo);
