@@ -56,12 +56,17 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   	}
 
   	return fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${start}&endtime=${end}&minmagnitude=${magnitude}&limit=${limit}`)
-  	  .then(
-  		response => response.json(),
-  		error => console.log('An error occurred.', error))
-  	  .then(json =>
-  		// Here, we update the app state with the results of the API call.
-  		dispatch(recieveEarthquakes(json)));
+    .then(
+        response => response.json()
+    )
+    .then(json =>
+        // Here, we update the app state with the results of the API call.
+        dispatch(recieveEarthquakes(json))
+    )
+    .catch(
+        (error) => {dispatch(invalidateEarthquakes()),
+        console.log('An error occurred.', error)}
+    );
   };
   thunk.meta = {
       debounce: {
