@@ -3,8 +3,6 @@ import google_map_api_key from '../config.js';
 import GoogleMapReact from 'google-map-react';
 import React from 'react';
 
-var minZoom = 4;
-
 const Map = ({center={lat:0, lng:0}, zoom=4, options={minZoom: 4, maxZoom: 13}, quakes}) => (
     <div className="Map" style={{ height: '88.9vh', width: '100%' }}>
         <GoogleMapReact
