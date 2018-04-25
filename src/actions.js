@@ -64,7 +64,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
         dispatch(recieveEarthquakes(json))
     )
     .catch(
-        (error) => {dispatch(invalidateEarthquakes()),
+        (error) => {dispatch(invalidateEarthquakes());
         console.log('An error occurred.', error)}
     );
   };
