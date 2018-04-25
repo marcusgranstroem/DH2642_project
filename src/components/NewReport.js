@@ -1,6 +1,5 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import {List, ListItem} from 'material-ui/List';
 import FlatButton from 'material-ui/FlatButton';
 
 export default class NewReport extends React.Component {

@@ -1,8 +1,6 @@
-import FlatButton from 'material-ui/FlatButton';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import React from 'react';
-import ReportsContainer from '../containers/ReportsContainer.js';
 
 const EarthquakeInfo = ({name, lat, long, mag, date, quakeId, fetchUserReports}) => (
     <div className="Earthquake-info">
