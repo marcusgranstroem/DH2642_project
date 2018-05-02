@@ -5,6 +5,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 import MaterialIcon from 'material-icons-react';
+import PropTypes from 'prop-types';
 
 export default class Banner extends React.Component {
 
@@ -68,4 +69,8 @@ export default class Banner extends React.Component {
             </header>
         );
     }
+}
+
+Banner.propTypes = {
+    fetchEarthquakes: PropTypes.func.isRequired
 }

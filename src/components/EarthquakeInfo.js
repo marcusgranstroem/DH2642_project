@@ -1,6 +1,7 @@
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const EarthquakeInfo = ({name, lat, long, mag, date, quakeId, fetchUserReports}) => (
     <div className="Earthquake-info">
@@ -14,5 +15,15 @@ const EarthquakeInfo = ({name, lat, long, mag, date, quakeId, fetchUserReports})
       </Menu>
     </div>
 );
+
+EarthquakeInfo.propTypes = {
+    name: PropTypes.string.isRequired,
+    lat: PropTypes.number.isRequired,
+    long: PropTypes.number.isRequired,
+    mag: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired,
+    quakeId: PropTypes.string.isRequired,
+    fetchUserReports: PropTypes.func.isRequired
+}
 
 export default EarthquakeInfo;

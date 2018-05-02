@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import PropTypes from 'prop-types';
 
 export default class NewReport extends React.Component {
     constructor(props) {
@@ -32,6 +33,10 @@ export default class NewReport extends React.Component {
              />
 	 </form>
      );
- }   
+ }
 }
 
+NewReport.propTypes = {
+    userName: PropTypes.string.isRequired,
+    submitNew: PropTypes.func.isRequired
+}

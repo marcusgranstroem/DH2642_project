@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import NewReport from './NewReport.js';
+import PropTypes from 'prop-types';
 
 const uuidv1 = require('uuid/v1');
 
@@ -56,7 +57,7 @@ export default class Reports extends React.Component {
             </div>
         );
 
-      
+
     return (
         <Dialog
           title="User Reports"
@@ -71,4 +72,9 @@ export default class Reports extends React.Component {
         </Dialog>
     );
   }
+}
+
+Reports.propTypes = {
+    close: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired
 }

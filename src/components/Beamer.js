@@ -2,6 +2,7 @@ import logo from '../logo.svg';
 import EarthquakeInfoContainer from '../containers/EarthquakeInfoContainer.js';
 import React from 'react';
 import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
+import PropTypes from 'prop-types';
 
 /*
  * Style is used to set coordinate alignement from center of the object,
@@ -60,4 +61,9 @@ export default class Beamer extends React.Component {
 	    </div>
 	);
     }
+}
+
+Beamer.propTypes = {
+    magnitude: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired
 }
