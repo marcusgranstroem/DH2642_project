@@ -1,5 +1,5 @@
-import MapContainer from './containers/MapContainer.js';
 import BannerContainer from './containers/BannerContainer.js';
+import MapContainer from './containers/MapContainer.js';
 import React, { Component } from 'react';
 import './css/App.css';
 

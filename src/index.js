@@ -17,6 +17,7 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
 const loggerMiddleware = createLogger();
 
+
 const store = createStore(
   quakeSeeReducer,
   applyMiddleware(
@@ -38,3 +39,4 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+ 
