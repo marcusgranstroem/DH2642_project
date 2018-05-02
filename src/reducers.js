@@ -11,7 +11,8 @@ import {
 
 const initalState = {
     earthquakes: [],
-    displayReports: false
+    displayReports: false,
+    overflow: false
 };
 
 function earthquakeReducer(state, action) {
@@ -22,7 +23,7 @@ function earthquakeReducer(state, action) {
     case REQUEST_EARTHQUAKES:
 	    return state;
     case RECIEVE_EARTHQUAKES:
-	    return Object.assign({}, state, {earthquakes: action.earthquakes});
+	    return Object.assign({}, state, {earthquakes: action.earthquakes, overflow: action.overflow});
     default:
 	    return state;
   }
