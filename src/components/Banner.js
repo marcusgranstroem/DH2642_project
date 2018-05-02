@@ -3,7 +3,8 @@ import logo from '../logo.svg';
 import Drawer from 'material-ui/Drawer';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import DatePicker from 'material-ui/DatePicker';
-import TextField from 'material-ui/TextField'
+import Login from './Login.js';
+import TextField from 'material-ui/TextField';
 import MaterialIcon from 'material-icons-react';
 
 export default class Banner extends React.Component {
@@ -47,6 +48,7 @@ export default class Banner extends React.Component {
                   <h1 className="App-title">QuakeSee</h1>
                 </div>
                 <div>
+		  <Login/>
                     <FloatingActionButton mini={true} onClick={this.handleToggle}>
                         <MaterialIcon icon="search"/>
                     </FloatingActionButton>
