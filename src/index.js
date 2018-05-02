@@ -14,17 +14,19 @@ import createDebounce from 'redux-debounced';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import firebase from './firebase';
 
 const loggerMiddleware = createLogger();
 
 
 const store = createStore(
-  quakeSeeReducer,
-  applyMiddleware(
-      createDebounce(), //Allows for debouncing
-	  thunkMiddleware, // lets us dispatch() functions
-	  loggerMiddleware // neat middleware that logs actions
-  )
+    quakeSeeReducer,
+    firebase.database,
+    applyMiddleware(
+        createDebounce(), //Allows for debouncing
+	thunkMiddleware, // lets us dispatch() functions
+	loggerMiddleware // neat middleware that logs actions
+    )
 );
 
 store.dispatch(fetchEarthquakes());

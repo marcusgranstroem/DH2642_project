@@ -25,6 +25,41 @@ export function invalidateEarthquakes() {
   };
 }
 
+export const REQUEST_REPORTS = 'REQUEST_REPORTS';
+function requestReports() {
+  return {
+    type: REQUEST_REPORTS
+  };
+}
+
+export const RECIEVE_REPORTS = 'RECIEVE_REPORTS';
+function recieveReports() {
+  return {
+    type: RECIEVE_REPORTS
+  };
+}
+
+export const CLOSE_REPORTS = 'CLOSE_REPORTS';
+function closeReports() {
+  return {
+    type: CLOSE_REPORTS
+  };
+}
+
+export const REQUEST_USER_REPORTS = 'REQUEST_USER_REPORTS';
+function requestUserReports() {
+    return {
+        type: REQUEST_USER_REPORTS
+    };
+}
+
+export const RECIEVE_USER_REPORTS = 'RECIEVE_USER_REPORTS';
+function requestUserReports() {
+    return {
+        type: RECIEVE_USER_REPORTS
+    };
+}
+
 export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   const thunk = dispatch => {
   	// Limit amount of return values
@@ -74,30 +109,8 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   return thunk;
 }
 
-export const REQUEST_REPORTS = 'REQUEST_REPORTS';
-function requestReports() {
-  return {
-    type: REQUEST_REPORTS
-  };
-}
-
-export const RECIEVE_REPORTS = 'RECIEVE_REPORTS';
-function recieveReports() {
-  return {
-    type: RECIEVE_REPORTS
-  };
-}
-
-export const CLOSE_REPORTS = 'CLOSE_REPORTS';
-function closeReports() {
-  return {
-    type: CLOSE_REPORTS
-  };
-}
-
 export function fetchUserReports(quakeId) {
     const thunk = dispatch => {
-
 	dispatch(requestReports());
 	dispatch(recieveReports());
     };
@@ -106,7 +119,6 @@ export function fetchUserReports(quakeId) {
 
 export function closeUserReports() {
     const thunk = dispatch => {
-
 	dispatch(closeReports());
     };
     return thunk;
