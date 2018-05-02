@@ -3,7 +3,7 @@ import logo from '../logo.svg';
 import Drawer from 'material-ui/Drawer';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import DatePicker from 'material-ui/DatePicker';
-import TextField from 'material-ui/TextField'
+import TextField from 'material-ui/TextField';
 import MaterialIcon from 'material-icons-react';
 
 export default class Banner extends React.Component {

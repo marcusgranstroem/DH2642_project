@@ -9,11 +9,12 @@ function requestEarthquakes() {
 }
 
 export const RECIEVE_EARTHQUAKES = 'RECIEVE_EARTHQUAKES';
-function recieveEarthquakes(json) {
+function recieveEarthquakes(json, limit) {
   return {
     type: RECIEVE_EARTHQUAKES,
     earthquakes: json.features,
-    recieveAt: Date.now()
+    recieveAt: Date.now(),
+    overflow: json.features.length === limit
   };
 }
 
@@ -57,7 +58,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
     )
     .then(json =>
         // Here, we update the app state with the results of the API call.
-        dispatch(recieveEarthquakes(json))
+        dispatch(recieveEarthquakes(json, limit))
     )
     .catch(
         (error) => {dispatch(invalidateEarthquakes());
@@ -96,7 +97,7 @@ function closeReports() {
 
 export function fetchUserReports(quakeId) {
     const thunk = dispatch => {
-	
+
 	dispatch(requestReports());
 	dispatch(recieveReports());
     };
@@ -105,7 +106,7 @@ export function fetchUserReports(quakeId) {
 
 export function closeUserReports() {
     const thunk = dispatch => {
-	
+
 	dispatch(closeReports());
     };
     return thunk;
