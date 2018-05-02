@@ -6,6 +6,7 @@ import DatePicker from 'material-ui/DatePicker';
 import Login from './Login.js';
 import TextField from 'material-ui/TextField';
 import MaterialIcon from 'material-icons-react';
+import CircularProgress from 'material-ui/CircularProgress';
 import PropTypes from 'prop-types';
 
 export default class Banner extends React.Component {
@@ -41,6 +42,9 @@ export default class Banner extends React.Component {
     }
 
     render () {
+        var loader;
+        if (this.props.searching)
+            loader = (<CircularProgress/>);
         return (
             <header className="App-header">
                 <h2 className="Developed-by">Developed by Nathan Bhat <br />& Marcus Granström</h2>
@@ -49,7 +53,7 @@ export default class Banner extends React.Component {
                   <h1 className="App-title">QuakeSee</h1>
                 </div>
                 <div>
-		  <Login/>
+		            <Login/>
                     <FloatingActionButton mini={true} onClick={this.handleToggle}>
                         <MaterialIcon icon="search"/>
                     </FloatingActionButton>
@@ -66,6 +70,7 @@ export default class Banner extends React.Component {
                             (e, date) => {this._handleMaxDateChange(e, date);
                                 this.props.fetchEarthquakes(this.state.minDate, date, this.state.mag);}
                         }/>
+                        {loader}
                     </Drawer>
                 </div>
             </header>

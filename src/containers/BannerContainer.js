@@ -4,6 +4,7 @@ import { fetchEarthquakes } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
+      searching: state.earthquakeReducer.searching
   };
 };
 
