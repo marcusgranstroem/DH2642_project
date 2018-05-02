@@ -52,9 +52,9 @@ export default class Banner extends React.Component {
                   <img src={logo} className="App-logo" alt="logo" />
                   <h1 className="App-title">QuakeSee</h1>
                 </div>
-                <div>
+                <div className="End-bar">
 		            <Login/>
-                    <FloatingActionButton mini={true} onClick={this.handleToggle}>
+                    <FloatingActionButton mini={true} onClick={this.handleToggle} className="Search-button">
                         <MaterialIcon icon="search"/>
                     </FloatingActionButton>
                     <Drawer docked={false} width={300} open={this.state.open} openSecondary={true} onRequestChange={(open => this.setState({open}))}>

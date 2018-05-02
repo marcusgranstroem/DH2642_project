@@ -71,4 +71,10 @@ html {
 .App-intro {
   font-size: large; }
 
+.End-bar {
+  display: flex; }
+
+.Login, .Search-button {
+  margin: 10px; }
+
 /*# sourceMappingURL=App.css.map */
