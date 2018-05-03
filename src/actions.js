@@ -111,7 +111,6 @@ export function fetchUserReports(quakeId) {
             reports.push(snap.val());
         };
 
-        console.log(quakeId);
         database.ref('/userReports/' + quakeId + '/').once("value", callback);
         dispatch(recieveReports(reports));
     };
