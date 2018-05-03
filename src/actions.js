@@ -1,4 +1,5 @@
 import fetch from 'cross-fetch';
+import database from './firebase';
 
 export const REQUEST_EARTHQUAKES = 'REQUEST_EARTHQUAKES';
 function requestEarthquakes() {
@@ -28,91 +29,91 @@ export function invalidateEarthquakes() {
 export const REQUEST_REPORTS = 'REQUEST_REPORTS';
 function requestReports() {
   return {
-    type: REQUEST_REPORTS
+      type: REQUEST_REPORTS
   };
 }
 
 export const RECIEVE_REPORTS = 'RECIEVE_REPORTS';
-function recieveReports() {
-  return {
-    type: RECIEVE_REPORTS
-  };
+function recieveReports(reports) {
+    return {
+        type: RECIEVE_REPORTS,
+        recievedReports: reports 
+    };
 }
 
 export const CLOSE_REPORTS = 'CLOSE_REPORTS';
 function closeReports() {
-  return {
-    type: CLOSE_REPORTS
-  };
-}
-
-export const REQUEST_USER_REPORTS = 'REQUEST_USER_REPORTS';
-function requestUserReports() {
     return {
-        type: REQUEST_USER_REPORTS
+        type: CLOSE_REPORTS
     };
 }
 
-export const RECIEVE_USER_REPORTS = 'RECIEVE_USER_REPORTS';
-function requestUserReports() {
-    return {
-        type: RECIEVE_USER_REPORTS
-    };
-}
-
+/*
+ * Fetch earthquakes from https://earthquake.usgs.gov 
+ * Result is limited to reduce the amount of data recieved from
+ */
 export function fetchEarthquakes(start=0, end=0, magnitude=0) {
-  const thunk = dispatch => {
+    const thunk = dispatch => {
   	// Limit amount of return values
   	var limit = 200;
   	dispatch(requestEarthquakes());
-
+        
   	if(magnitude < 0) {
-  	  console.error("Magnitude was set to" + magnitude);
-  	  magnitude = 0;
+  	    console.error("Magnitude was set to" + magnitude);
+  	    magnitude = 0;
   	}
   	// API only handles timeformat in ISO8601
   	if(start !== 0 && start !=="") {
-  	  let d = new Date(start);
-  	  start = d.toISOString();
+  	    let d = new Date(start);
+  	    start = d.toISOString();
   	} else {
-  	  let d = new Date((new Date().valueOf() - 1000*3600*24));
-  	  start = d.toISOString();
+  	    let d = new Date((new Date().valueOf() - 1000*3600*24));
+  	    start = d.toISOString();
   	}
+
   	if(end !== 0 && end !=="") {
-  	  let e = new Date(end);
-  	  end = e.toISOString();
-
+  	    let e = new Date(end);
+  	    end = e.toISOString();
   	} else {
-  	  let d = new Date();
-  	  end = d.toISOString();
+  	    let d = new Date();
+  	    end = d.toISOString();
   	}
-
+        
   	return fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${start}&endtime=${end}&minmagnitude=${magnitude}&limit=${limit}`)
     .then(
         response => response.json()
     )
-    .then(json =>
-        // Here, we update the app state with the results of the API call.
-        dispatch(recieveEarthquakes(json, limit))
-    )
-    .catch(
-        (error) => {dispatch(invalidateEarthquakes());
-        console.error('An error occurred.', error)}
-    );
-  };
-  thunk.meta = {
-      debounce: {
-          time: 400,
-          key: 'SEARCH'
-      }
-  };
-  return thunk;
+            .then(json =>
+                  // Here, we update the app state with the results of the API call.
+                  dispatch(recieveEarthquakes(json, limit))
+                 )
+            .catch(
+                (error) => {dispatch(invalidateEarthquakes());
+                            console.error('An error occurred.', error);}
+            );
+    };
+    thunk.meta = {
+        debounce: {
+            time: 400,
+            key: 'SEARCH'
+        }
+    };
+    return thunk;
 }
 
 export function fetchUserReports(quakeId) {
     const thunk = dispatch => {
-	dispatch(requestReports());
-	dispatch(recieveReports());
+        let reports = [];
+        dispatch(requestReports());
+
+        // Callback function to retrieve all values from path in db
+        var callback = snap => {
+            reports.push(snap.val());
+        };
+
+        console.log(quakeId);
+        database.ref('/userReports/' + quakeId + '/').once("value", callback);
+        dispatch(recieveReports(reports));
     };
     return thunk;
 }

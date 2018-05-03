@@ -37,27 +37,35 @@ export default class Reports extends React.Component {
 	disabled={this.state.writing}
       />,
     ];
-
-    const reports = [];
-    if (false) //Check if there are no Reports
-        reports.push(<p>No user reports yet.</p>);
-    else //example
-        reports.push(
-            <div key={uuidv1()}>
-                <ListItem primaryText="Nathan Bhat" secondaryText={<p>I was there.</p>} disabled={true}/>
-                <Divider />
-            </div>
-        );
-
-    if (this.state.writing)
-        reports.push(
-            <div>
-                <NewReport userName={"Marcus Granström"} submitNew={this.handleSubmit}/>
-                <Divider />
-            </div>
-        );
-
-
+      
+      const reports = [];
+      if (!this.props.reports) //Check if there are no Reports
+          reports.push(<p>No user reports yet.</p>);
+      else {
+          // Get inside first object which is "0"
+          let tmp = this.props.reports[0];
+          for(var key in tmp) {
+              if(tmp.hasOwnProperty(key)) {
+                  reports.push(
+                      <div key={uuidv1()}>
+                        <ListItem primaryText={tmp[key]['nickName']} secondaryText={<p>{tmp[key]['comment']}</p>} disabled={true}/>
+                        <Divider />
+                      </div>
+                  );
+              }
+          }
+          
+      } 
+      /*     TODO
+             if (this.state.writing)
+             reports.push(
+             <div>
+               <NewReport userName={"Marcus Granström"} submitNew={this.handleSubmit}/>
+               <Divider />
+             </div>
+             );*/
+      
+      
     return (
         <Dialog
           title="User Reports"
@@ -77,4 +85,4 @@ export default class Reports extends React.Component {
 Reports.propTypes = {
     close: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired
-}
+};
