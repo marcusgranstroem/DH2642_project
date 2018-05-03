@@ -24,6 +24,6 @@ EarthquakeInfo.propTypes = {
     date: PropTypes.string.isRequired,
     quakeId: PropTypes.string.isRequired,
     fetchUserReports: PropTypes.func.isRequired
-}
+};
 
 export default EarthquakeInfo;
