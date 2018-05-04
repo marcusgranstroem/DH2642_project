@@ -3,7 +3,7 @@ import MenuItem from 'material-ui/MenuItem';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const EarthquakeInfo = ({name, lat, long, mag, date, quakeId, fetchUserReports}) => (
+const EarthquakeInfo = ({name, lat, long, mag, date, quakeId,  fetchUserReports}) => (
     <div className="Earthquake-info">
       <Menu width={300}>
     	<MenuItem primaryText={'Place: '} secondaryText={name} disabled={true}/>

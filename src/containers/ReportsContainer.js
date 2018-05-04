@@ -5,7 +5,8 @@ import { closeUserReports } from '../actions';
 const mapStateToProps = (state) => {
   return {
       open: state.reportsReducer.displayReports,
-      reports: state.reportsReducer.userReports
+      reports: state.reportsReducer.userReports,
+      userName: state.loginReducer.userName
   };
 };
 

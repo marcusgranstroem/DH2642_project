@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 const config = {
-    apiKey: "***REMOVED***",
+    apiKey: "AIzaSyDhVAgUJGjyAXob44SWcbQMvJEw6AAKAiA",
     authDomain: "quakesee.firebaseapp.com",
     databaseURL: "https://quakesee.firebaseio.com",
     projectId: "quakesee",
