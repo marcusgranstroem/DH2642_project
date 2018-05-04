@@ -61,7 +61,7 @@ export default class Reports extends React.Component {
         if (this.state.writing)
             reports.push(
                 <div>
-                  <NewReport userName={"Marcus Granström"}
+                  <NewReport userName={this.props.userName}
                              submitNew={this.handleSubmit}/>
                   <Divider/>
                 </div>
@@ -85,5 +85,6 @@ export default class Reports extends React.Component {
 
 Reports.propTypes = {
     close: PropTypes.func.isRequired,
-    open: PropTypes.bool.isRequired
+    open: PropTypes.bool.isRequired,
+    userName: PropTypes.string.isRequired
 };

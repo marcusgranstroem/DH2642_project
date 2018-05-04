@@ -1,5 +1,4 @@
 import BannerContainer from './containers/BannerContainer.js';
-import firebase from './firebase';
 import MapContainer from './containers/MapContainer.js';
 import React, { Component } from 'react';
 import SearchSnackContainer from './containers/SearchSnackContainer.js';

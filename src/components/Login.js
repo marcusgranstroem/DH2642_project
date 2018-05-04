@@ -5,6 +5,7 @@ export default class Login extends React.Component {
 
     responseGoogle = (response) => {
 	console.log(response);
+        this.props.handleLogin(response);
     };
 
     render() {
@@ -12,7 +13,7 @@ export default class Login extends React.Component {
 	    <div className="Login">
 	      <GoogleLogin
 		clientId="11679518606-kas6j3im0oh402929qfg1q5ciup4o9b5.apps.googleusercontent.com"
-		//buttonText="Login"
+		buttonText="Login"
 		onSuccess={this.responseGoogle}
 		onFailure={this.responseGoogle}
 		/>

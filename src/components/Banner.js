@@ -60,7 +60,7 @@ export default class Banner extends React.Component {
                 </h1>
               </div>
               <div className="End-bar">
-		<Login/>
+		<Login handleLogin={this.props.handleLogin}/>
                 <FloatingActionButton mini={true}
                                       onClick={this.handleToggle}
                                       className="Search-button">
