@@ -7,6 +7,7 @@ import {
     REQUEST_EARTHQUAKES,
     RECIEVE_REPORTS,
     REQUEST_REPORTS,
+    USER_LOGIN,
 } from './actions';
 
 const initalState = {
@@ -14,7 +15,8 @@ const initalState = {
     displayReports: false,
     userReports: [],
     overflow: false,
-    searching: false
+    searching: false,
+    userName: ""
 };
 
 function earthquakeReducer(state, action) {
@@ -45,9 +47,21 @@ function reportsReducer(state, action) {
     }
 }
 
+function loginReducer(state, action) {
+     if(typeof state === 'undefined') state = initalState;
+    switch (action.type) {
+    case USER_LOGIN:
+        return Object.assign({}, state, {userName: action.nickName});
+    default:
+        return state;
+    }
+}
+
+
 const quakeSeeReducer = combineReducers({
     earthquakeReducer,
-    reportsReducer
+    reportsReducer,
+    loginReducer
 });
 
 export default quakeSeeReducer;

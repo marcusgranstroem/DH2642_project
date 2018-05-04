@@ -48,6 +48,14 @@ function closeReports() {
     };
 }
 
+export const USER_LOGIN = 'USER_LOGIN';
+function userLogin(nickName) {
+    return {
+        type: USER_LOGIN,
+        nickName: nickName
+    };
+}
+
 /*
  * Fetch earthquakes from https://earthquake.usgs.gov 
  * Result is limited to reduce the amount of data recieved from
@@ -78,8 +86,15 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   	    let d = new Date();
   	    end = d.toISOString();
   	}
-        
-  	return fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${start}&endtime=${end}&minmagnitude=${magnitude}&limit=${limit}`)
+
+        let url = `https://earthquake.usgs.gov/fdsnws/event/1/query?` +
+            `format=geojson&` +
+            `starttime=${start}&` +
+            `endtime=${end}&` +
+            `minmagnitude=${magnitude}&` +
+            `limit=${limit}`;
+
+  	return fetch(url)
     .then(
         response => response.json()
     )
@@ -120,6 +135,17 @@ export function fetchUserReports(quakeId) {
 export function closeUserReports() {
     const thunk = dispatch => {
 	dispatch(closeReports());
+    };
+    return thunk;
+}
+
+export function handleLogin(userToken) {
+    const thunk = dispatch => {
+
+        userToken = userToken.googleId;
+        database.ref('/userProfiles/' + userToken + '/nickName/').once("value")
+            .then(nickName => {
+	        dispatch(userLogin(nickName.val()));});
     };
     return thunk;
 }
