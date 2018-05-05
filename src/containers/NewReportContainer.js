@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    postReport: (quakeId, username, comment) => dispatch(postReport(quakeId, username, comment))
+    postReport: (quakeId, userName, comment) => dispatch(postReport(quakeId, userName, comment))
 });
 
 export default connect(

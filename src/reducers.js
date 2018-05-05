@@ -47,7 +47,8 @@ function reportsReducer(state, action) {
     case RECIEVE_REPORTS:
         return Object.assign({}, state, {userReports: action.recievedReports});
     case POST_USER_REPORT:
-        return state;
+        let merged = Object.assign(state.userReports, action.newPost);
+        return Object.assign({}, state, {userReports: merged});
     default:
         return state;
     }
@@ -64,7 +65,6 @@ function loginReducer(state, action) {
         return state;
     }
 }
-
 
 const quakeSeeReducer = combineReducers({
     earthquakeReducer,

@@ -30,7 +30,7 @@ export default class NewReport extends React.Component {
                   label="Submit"
                   primary={true}
                   onClick={() => {
-                      this.props.postReport(this.props.quakeId, this.props.username, this.state.textFieldValue);
+                      this.props.postReport(this.props.quakeId, this.props.userName, this.state.textFieldValue);
                       this.props.submitNew(); // Just to modify local state of parent
                       }
                   }

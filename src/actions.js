@@ -53,7 +53,7 @@ export const USER_LOGIN = 'USER_LOGIN';
 function userLogin(nickName) {
     return {
         type: USER_LOGIN,
-        nickName: nickName,
+        nickName: nickName
     };
 }
 
@@ -66,9 +66,10 @@ function userLoginFailed(error) {
 }
 
 export const POST_USER_REPORT  = 'POST_USER_REPORT';
-function postUserReport() {
+function postUserReport(post) {
     return {
-        type: POST_USER_REPORT
+        type: POST_USER_REPORT,
+        newPost: post
     };
 }
 
@@ -181,8 +182,19 @@ export function errorLogin(response) {
 
 export function postReport(quakeId, userName, comment) {
     const thunk = dispatch => {
-        let str = "PostReport: quakeid" + quakeId + " . comment: " + comment;
-        console.log(str);
-    };
+        // Get current time in ms (UNIX time)
+        console.log(userName);
+        let timestamp = new Date().getTime();
+        let reportsRef = database.ref('/userReports/'+ quakeId + '/');
+        reportsRef.update({
+                [timestamp]: {
+                    "nickName": userName,
+                    "comment": comment
+                }
+        }) 
+            .then(
+                dispatch(postUserReport({[timestamp]: {'comment': comment, 'nickName': userName}})
+                        ));
+};
     return thunk;
 }

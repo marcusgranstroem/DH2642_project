@@ -42,6 +42,7 @@ export default class Reports extends React.Component {
         else {
             let v = this.props.reports;
 
+            console.log(v);
             // Loop trough all reports for current earthquake
             for(var key in v)
                 if(v.hasOwnProperty(key)) {
