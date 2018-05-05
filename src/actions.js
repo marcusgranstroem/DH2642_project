@@ -27,9 +27,10 @@ export function invalidateEarthquakes() {
 }
 
 export const REQUEST_REPORTS = 'REQUEST_REPORTS';
-function requestReports() {
+function requestReports(quakeId) {
   return {
-      type: REQUEST_REPORTS
+      type: REQUEST_REPORTS,
+      quakeId
   };
 }
 
@@ -61,6 +62,13 @@ function userLoginFailed(error) {
     return {
         type: USER_LOGIN_FAILED,
         error: error
+    };
+}
+
+export const POST_USER_REPORT  = 'POST_USER_REPORT';
+function postUserReport() {
+    return {
+        type: POST_USER_REPORT
     };
 }
 
@@ -128,7 +136,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
 export function fetchUserReports(quakeId) {
     const thunk = dispatch => {
         //let reports = [];
-        dispatch(requestReports());
+        dispatch(requestReports(quakeId));
 
         // Callback function to retrieve all values from path in db
         //var callback = snap => {
@@ -171,9 +179,10 @@ export function errorLogin(response) {
     return thunk;
 }
 
-export function postReport(userName, comment) {
+export function postReport(quakeId, userName, comment) {
     const thunk = dispatch => {
-        //dispatch(userLoginFailed(response)); 
+        let str = "PostReport: quakeid" + quakeId + " . comment: " + comment;
+        console.log(str);
     };
     return thunk;
 }
