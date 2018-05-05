@@ -71,10 +71,11 @@ html {
 .App-intro {
   font-size: large; }
 
-.End-bar {
-  display: flex; }
+.End-bar, .User-menu {
+  display: flex;
+  align-items: center; }
 
-.Login, .Search-button {
+.Login, .Search-button, .User-button {
   margin: 10px; }
 
 /*# sourceMappingURL=App.css.map */

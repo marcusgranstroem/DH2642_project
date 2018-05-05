@@ -49,10 +49,11 @@ html {
   font-size: large;
 }
 
-.End-bar {
+.End-bar, .User-menu {
     display: flex;
+    align-items: center;
 }
 
-.Login, .Search-button {
+.Login, .Search-button, .User-button {
     margin: 10px;
 }

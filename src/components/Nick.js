@@ -1,6 +1,7 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import MaterialIcon from 'material-icons-react';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
@@ -24,16 +25,23 @@ export default class NewReport extends React.Component {
 
     handleToggle = () => this.setState({open: !this.state.open});
 
+    handleSubmit = () => {
+        this.setState({
+            textFieldValue: '',
+            open: false
+        });
+    }
+
     render() {
         return (
-            <div>
+            <div className="User-menu">
                 <p>{this.props.userName}</p>
         	    <IconMenu
-                    iconButtonElement={<IconButton><MaterialIcon icon="account_circle"/></IconButton>}
+                    iconButtonElement={<FloatingActionButton mini={true} className="User-button"><MaterialIcon icon="account_circle"/></FloatingActionButton>}
                     onRequestChange={this.handleToggle}
                     open={this.state.open}
                 >
-                      <p>Change User Name</p>
+                      <p className="User-name">Change User Name</p>
                       <TextField
                         floatingLabelText={this.props.userName}
                         multiLine={true}
@@ -44,7 +52,7 @@ export default class NewReport extends React.Component {
                         <FlatButton
                           label="Submit"
                           primary={true}
-                          onClick={() => {console.log("Hello"); this.handleToggle();}}
+                          onClick={() => {console.log("Hello"); this.handleSubmit();}}
                           />
         	    </IconMenu>
             </div>
