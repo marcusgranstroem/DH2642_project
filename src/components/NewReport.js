@@ -29,7 +29,11 @@ export default class NewReport extends React.Component {
                 <FlatButton
                   label="Submit"
                   primary={true}
-                  onClick={() => this.props.submitNew(this.state.textFieldValue)}
+                  onClick={() => {
+                      this.props.postReport(this.props.quakeId, this.props.username, this.state.textFieldValue);
+                      this.props.submitNew(); // Just to modify local state of parent
+                      }
+                  }
                   />
 	    </form>
         );

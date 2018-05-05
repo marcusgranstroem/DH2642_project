@@ -9,6 +9,7 @@ import {
     REQUEST_REPORTS,
     USER_LOGIN,
     USER_LOGIN_FAILED,
+    POST_USER_REPORT
 } from './actions';
 
 const initalState = {
@@ -18,7 +19,8 @@ const initalState = {
     overflow: false,
     searching: false,
     userName: "",
-    isLoggedIn: false
+    isLoggedIn: false,
+    quakeId: 0
 };
 
 function earthquakeReducer(state, action) {
@@ -41,9 +43,11 @@ function reportsReducer(state, action) {
     case CLOSE_REPORTS:
         return Object.assign({}, state, {displayReports: false});
     case REQUEST_REPORTS:
-        return Object.assign({}, state, {displayReports: true});
+        return Object.assign({}, state, {displayReports: true, quakeId: action.quakeId});
     case RECIEVE_REPORTS:
         return Object.assign({}, state, {userReports: action.recievedReports});
+    case POST_USER_REPORT:
+        return state;
     default:
         return state;
     }

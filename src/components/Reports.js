@@ -3,7 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import NewReport from './NewReport.js';
+import NewReportContainer from '../containers/NewReportContainer.js';
 import PropTypes from 'prop-types';
 
 const uuidv1 = require('uuid/v1');
@@ -19,7 +19,6 @@ export default class Reports extends React.Component {
     };
 
     handleSubmit = (text) => {
-        console.log(text);
         this.setState({writing: false});
     };
 
@@ -41,7 +40,6 @@ export default class Reports extends React.Component {
         if (!this.props.reports) //Check if there are no Reports
             reports.push(<p>No user reports yet.</p>);
         else {
-            // Get inside first object which is "0"
             let v = this.props.reports;
 
             // Loop trough all reports for current earthquake
@@ -61,7 +59,7 @@ export default class Reports extends React.Component {
         if (this.state.writing)
             reports.push(
                 <div key={uuidv1()}>
-                  <NewReport userName={this.props.userName}
+                  <NewReportContainer 
                              submitNew={this.handleSubmit}/>
                   <Divider/>
                 </div>
