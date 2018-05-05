@@ -57,9 +57,10 @@ function userLogin(nickName) {
 }
 
 export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED';
-function userLoginFailed() {
+function userLoginFailed(error) {
     return {
         type: USER_LOGIN_FAILED,
+        error: error
     };
 }
 
@@ -147,19 +148,23 @@ export function closeUserReports() {
     return thunk;
 }
 
-export function handleLogin(userToken) {
+export function handleLogin(response) {
     const thunk = dispatch => {
 
-        userToken = userToken.googleId;
+        let userToken = response.googleId;
         database.ref('/userProfiles/' + userToken + '/nickName/').once("value")
             .then(nickName =>
-                {dispatch(userLogin(nickName.val()));}
-                )
-            .catch(
-                (error) => {dispatch(userLoginFailed());
-                            console.error('An error occurred. ', error);}
+                  {
+                      dispatch(userLogin(nickName.val()));
+                  }
             );
     };
     return thunk;
 }
 
+export function errorLogin(response) {
+    const thunk = dispatch => {
+        dispatch(userLoginFailed(response)); 
+    };
+    return thunk;
+}
