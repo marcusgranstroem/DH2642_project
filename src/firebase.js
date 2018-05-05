@@ -1,7 +1,8 @@
 import * as firebase from 'firebase';
+import api_keys from './config.js';
 
 const config = {
-    apiKey: "AIzaSyDhVAgUJGjyAXob44SWcbQMvJEw6AAKAiA",
+    apiKey: api_keys.firebase_db_key,
     authDomain: "quakesee.firebaseapp.com",
     databaseURL: "https://quakesee.firebaseio.com",
     projectId: "quakesee",
