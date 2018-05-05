@@ -45,6 +45,9 @@ export default class Banner extends React.Component {
         var loader;
         if (this.props.searching)
             loader = (<CircularProgress/>);
+        var login;
+        if (!this.props.isLoggedIn)
+            login = (<LoginContainer/>);
         return (
             <header className="App-header">
               <h2 className="Developed-by">
@@ -60,7 +63,7 @@ export default class Banner extends React.Component {
                 </h1>
               </div>
               <div className="End-bar">
-		<LoginContainer/>
+		            {login}
                 <FloatingActionButton mini={true}
                                       onClick={this.handleToggle}
                                       className="Search-button">
