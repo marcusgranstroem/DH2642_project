@@ -20,27 +20,27 @@ export default class Banner extends React.Component {
             maxDate: ''
         };
     }
-    
+
     handleToggle = () => this.setState({open: !this.state.open});
-    
+
     _handleTextFieldChange = (e) => {
         this.setState({
             mag: e.target.value
         });
     }
-    
+
     _handleMinDateChange = (e, date) => {
         this.setState({
             minDate: date
         });
     }
-    
+
     _handleMaxDateChange = (e, date) => {
         this.setState({
             maxDate: date
         });
     }
-    
+
     render () {
         var loader;
         if (this.props.searching)
@@ -60,7 +60,7 @@ export default class Banner extends React.Component {
                 </h1>
               </div>
               <div className="End-bar">
-		<Login handleLogin={this.props.handleLogin}/>
+		<Login handleLogin={this.props.handleLogin} errorLogin={this.props.errorLogin}/>
                 <FloatingActionButton mini={true}
                                       onClick={this.handleToggle}
                                       className="Search-button">
