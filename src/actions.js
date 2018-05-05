@@ -87,7 +87,8 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   	    end = d.toISOString();
   	}
 
-        let url = `https://earthquake.usgs.gov/fdsnws/event/1/query?` +
+        let url =
+            `https://earthquake.usgs.gov/fdsnws/event/1/query?` +
             `format=geojson&` +
             `starttime=${start}&` +
             `endtime=${end}&` +
