@@ -42,7 +42,7 @@ export default class Reports extends React.Component {
             reports.push(<p>No user reports yet.</p>);
         else {
             // Get inside first object which is "0"
-            let v = this.props.reports[0];
+            let v = this.props.reports;
 
             // Loop trough all reports for current earthquake
             for(var key in v)

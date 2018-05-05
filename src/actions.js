@@ -127,16 +127,18 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
 
 export function fetchUserReports(quakeId) {
     const thunk = dispatch => {
-        let reports = [];
+        //let reports = [];
         dispatch(requestReports());
 
         // Callback function to retrieve all values from path in db
-        var callback = snap => {
-            reports.push(snap.val());
-        };
+        //var callback = snap => {
+          //  reports.push(snap.val());
+        //};
 
-        database.ref('/userReports/' + quakeId + '/').once("value", callback);
-        dispatch(recieveReports(reports));
+        database.ref('/userReports/' + quakeId + '/').once("value")
+            .then((reports) => {
+                dispatch(recieveReports(reports.val()));
+            });
     };
     return thunk;
 }
@@ -165,6 +167,13 @@ export function handleLogin(response) {
 export function errorLogin(response) {
     const thunk = dispatch => {
         dispatch(userLoginFailed(response)); 
+    };
+    return thunk;
+}
+
+export function postReport(userName, comment) {
+    const thunk = dispatch => {
+        //dispatch(userLoginFailed(response)); 
     };
     return thunk;
 }
