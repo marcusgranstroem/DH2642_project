@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const uuidv1 = require('uuid/v1');
 
 export default class Reports extends React.Component {
-    
+
     state = {
         writing: false
     };
@@ -17,12 +17,12 @@ export default class Reports extends React.Component {
     handleWriting = () => {
         this.setState({writing: true});
     };
-    
+
     handleSubmit = (text) => {
         console.log(text);
         this.setState({writing: false});
     };
-    
+
     render() {
         const actions = [
             <FlatButton label="Close"
@@ -35,7 +35,7 @@ export default class Reports extends React.Component {
 	                disabled={this.state.writing}
                         />,
         ];
-        
+
         const reports = [];
 
         if (!this.props.reports) //Check if there are no Reports
@@ -44,7 +44,7 @@ export default class Reports extends React.Component {
             // Get inside first object which is "0"
             let v = this.props.reports[0];
 
-            // Loop trough all reports for current earthquake 
+            // Loop trough all reports for current earthquake
             for(var key in v)
                 if(v.hasOwnProperty(key)) {
                     reports.push(
@@ -56,18 +56,18 @@ export default class Reports extends React.Component {
                         </div>
                     );
                 }
-        } 
+        }
 
         if (this.state.writing)
             reports.push(
-                <div>
+                <div key={uuidv1()}>
                   <NewReport userName={this.props.userName}
                              submitNew={this.handleSubmit}/>
                   <Divider/>
                 </div>
             );
-        
-        
+
+
         return (
             <Dialog title="User Reports"
                     actions={actions}

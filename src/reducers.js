@@ -8,6 +8,7 @@ import {
     RECIEVE_REPORTS,
     REQUEST_REPORTS,
     USER_LOGIN,
+    USER_LOGIN_FAILED,
 } from './actions';
 
 const initalState = {
@@ -16,7 +17,8 @@ const initalState = {
     userReports: [],
     overflow: false,
     searching: false,
-    userName: ""
+    userName: "",
+    isLoggedIn: false
 };
 
 function earthquakeReducer(state, action) {
@@ -51,7 +53,9 @@ function loginReducer(state, action) {
      if(typeof state === 'undefined') state = initalState;
     switch (action.type) {
     case USER_LOGIN:
-        return Object.assign({}, state, {userName: action.nickName});
+        return Object.assign({}, state, {userName: action.nickName, isLoggedIn: true});
+    case USER_LOGIN_FAILED:
+        return state;
     default:
         return state;
     }

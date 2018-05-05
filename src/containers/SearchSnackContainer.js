@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import Snack from '../components/Snack.js';
 
-var forceUpdate = false;
-
 const mapStateToProps = (state) => {
   return {
       open: state.earthquakeReducer.overflow && !state.earthquakeReducer.searching, //chack when done searching

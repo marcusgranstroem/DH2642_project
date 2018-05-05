@@ -37,7 +37,7 @@ export const RECIEVE_REPORTS = 'RECIEVE_REPORTS';
 function recieveReports(reports) {
     return {
         type: RECIEVE_REPORTS,
-        recievedReports: reports 
+        recievedReports: reports
     };
 }
 
@@ -52,12 +52,19 @@ export const USER_LOGIN = 'USER_LOGIN';
 function userLogin(nickName) {
     return {
         type: USER_LOGIN,
-        nickName: nickName
+        nickName: nickName,
+    };
+}
+
+export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED';
+function userLoginFailed() {
+    return {
+        type: USER_LOGIN_FAILED,
     };
 }
 
 /*
- * Fetch earthquakes from https://earthquake.usgs.gov 
+ * Fetch earthquakes from https://earthquake.usgs.gov
  * Result is limited to reduce the amount of data recieved from
  */
 export function fetchEarthquakes(start=0, end=0, magnitude=0) {
@@ -65,7 +72,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   	// Limit amount of return values
   	var limit = 200;
   	dispatch(requestEarthquakes());
-        
+
   	if(magnitude < 0) {
   	    console.error("Magnitude was set to" + magnitude);
   	    magnitude = 0;
@@ -105,7 +112,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
                  )
             .catch(
                 (error) => {dispatch(invalidateEarthquakes());
-                            console.error('An error occurred.', error);}
+                            console.error('An error occurred. ', error);}
             );
     };
     thunk.meta = {
@@ -145,8 +152,13 @@ export function handleLogin(userToken) {
 
         userToken = userToken.googleId;
         database.ref('/userProfiles/' + userToken + '/nickName/').once("value")
-            .then(nickName => {
-	        dispatch(userLogin(nickName.val()));});
+            .then(nickName =>
+                {dispatch(userLogin(nickName.val()));}
+                )
+            .catch(
+                (error) => {dispatch(userLoginFailed());
+                            console.error('An error occurred. ', error);}
+            );
     };
     return thunk;
 }
