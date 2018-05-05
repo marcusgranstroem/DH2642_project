@@ -1,3 +1,6 @@
+@import url(~/node_modules/bootstrap/dist/css/bootstrap.css);
+@import url(~/node_modules/bootstrap/dist/css/bootstrap-theme.css);
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -68,10 +71,11 @@ html {
 .App-intro {
   font-size: large; }
 
-.End-bar {
-  display: flex; }
+.End-bar, .User-menu {
+  display: flex;
+  align-items: center; }
 
-.Login, .Search-button {
+.Login, .Search-button, .User-button {
   margin: 10px; }
 
 /*# sourceMappingURL=App.css.map */

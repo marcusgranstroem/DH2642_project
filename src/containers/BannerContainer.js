@@ -4,7 +4,8 @@ import { fetchEarthquakes } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
-      searching: state.earthquakeReducer.searching
+      searching: state.earthquakeReducer.searching,
+      isLoggedIn: state.loginReducer.isLoggedIn
   };
 };
 

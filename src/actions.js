@@ -5,7 +5,6 @@ export const REQUEST_EARTHQUAKES = 'REQUEST_EARTHQUAKES';
 function requestEarthquakes() {
   return {
     type: REQUEST_EARTHQUAKES,
-    // TODO add loader
   };
 }
 
@@ -20,9 +19,10 @@ function recieveEarthquakes(json, limit) {
 }
 
 export const INVALIDATE_EARTHQUAKES = 'INVALIDATE_EARTHQUAKES';
-export function invalidateEarthquakes() {
+export function invalidateEarthquakes(error) {
   return {
-	 type: INVALIDATE_EARTHQUAKES
+	 type: INVALIDATE_EARTHQUAKES,
+     error: error
   };
 }
 
@@ -73,6 +73,13 @@ function postUserReport(post) {
     };
 }
 
+export const CLOSE_ERROR = 'CLOSE_ERROR';
+function closeError() {
+    return {
+        type: CLOSE_ERROR
+    };
+}
+
 /*
  * Fetch earthquakes from https://earthquake.usgs.gov
  * Result is limited to reduce the amount of data recieved from
@@ -84,7 +91,11 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   	dispatch(requestEarthquakes());
 
   	if(magnitude < 0) {
-  	    console.error("Magnitude was set to" + magnitude);
+        dispatch(invalidateEarthquakes({
+            error: "Magnitude Error",
+            details: "Magnitude set to a negative value."
+        }));
+
   	    magnitude = 0;
   	}
   	// API only handles timeformat in ISO8601
@@ -121,8 +132,9 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
                   dispatch(recieveEarthquakes(json, limit))
                  )
             .catch(
-                (error) => {dispatch(invalidateEarthquakes());
-                            console.error('An error occurred. ', error);}
+                (error) => {
+                            dispatch(invalidateEarthquakes({error: "Search Error", details: error.toString()}));
+                        }
             );
     };
     thunk.meta = {
@@ -154,7 +166,14 @@ export function fetchUserReports(quakeId) {
 
 export function closeUserReports() {
     const thunk = dispatch => {
-	dispatch(closeReports());
+    	dispatch(closeReports());
+    };
+    return thunk;
+}
+
+export function closeErrorMessage() {
+    const thunk = dispatch => {
+    	dispatch(closeError());
     };
     return thunk;
 }
@@ -175,7 +194,7 @@ export function handleLogin(response) {
 
 export function errorLogin(response) {
     const thunk = dispatch => {
-        dispatch(userLoginFailed(response)); 
+        dispatch(userLoginFailed(response));
     };
     return thunk;
 }
