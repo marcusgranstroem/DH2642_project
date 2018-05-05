@@ -75,7 +75,7 @@ html {
   display: flex;
   align-items: center; }
 
-.Login, .Search-button, .User-button {
+.Login, .Search-button, .User-button, .User-name {
   margin: 10px; }
 
 /*# sourceMappingURL=App.css.map */
