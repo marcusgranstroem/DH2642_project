@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
   return {
       open: state.reportsReducer.displayReports,
       reports: state.reportsReducer.userReports,
-      userName: state.loginReducer.userName
+      userName: state.loginReducer.userName,
+      isLoggedIn: state.loginReducer.isLoggedIn
   };
 };
 

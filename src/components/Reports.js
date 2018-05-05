@@ -26,12 +26,12 @@ export default class Reports extends React.Component {
         const actions = [
             <FlatButton label="Close"
                         secondary={true}
-                        onClick={this.props.close}
+                        onClick={() => {this.props.close(); this.handleSubmit();}}
                         />,
             <FlatButton label="Write New"
                         primary={true}
                         onClick={this.handleWriting}
-	                disabled={this.state.writing}
+	                disabled={this.state.writing || !this.props.isLoggedIn}
                         />,
         ];
 
@@ -63,7 +63,7 @@ export default class Reports extends React.Component {
         if (this.state.writing)
             reports.push(
                 <div key={uuidv1()}>
-                  <NewReportContainer 
+                  <NewReportContainer
                              submitNew={this.handleSubmit}/>
                   <Divider/>
                 </div>
