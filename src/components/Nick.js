@@ -37,7 +37,7 @@ export default class NewReport extends React.Component {
                       <TextField
                         floatingLabelText={this.props.userName}
                         multiLine={true}
-                        rows={3}
+                        rows={1}
         	        value={this.state.textFieldValue}
         	        onChange={(e) => this._handleTextFieldChange(e)}
                         />
