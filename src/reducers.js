@@ -21,7 +21,7 @@ const initalEarthquakeState = {
 
 const initalReportsState = {
     displayReports: false,
-    userReports: [],
+    userReports: {},
     quakeId: 0
 };
 
@@ -57,7 +57,12 @@ function reportsReducer(state, action) {
     case RECIEVE_REPORTS:
         return Object.assign({}, state, {userReports: action.recievedReports});
     case POST_USER_REPORT:
-        let merged = Object.assign(state.userReports, action.newPost);
+        let merged;
+        if(state.userReports) {
+             merged = Object.assign(state.userReports, action.newPost);
+        } else {
+            merged = action.newPost;
+        }
         return Object.assign({}, state, {userReports: merged});
     default:
         return state;
