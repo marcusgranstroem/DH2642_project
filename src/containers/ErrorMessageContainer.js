@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import ErrorMessage from '../components/ErrorMessage.js';
-//import { closeUserReports } from '../actions';
+import { closeErrorMessage } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
-      open: true,
-      message: ""
+      open: state.errorReducer.displayError,
+      message: state.errorReducer.errorMessage
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    //close: () => dispatch(closeUserReports())
+    close: () => dispatch(closeErrorMessage())
 });
 
 export default connect(
