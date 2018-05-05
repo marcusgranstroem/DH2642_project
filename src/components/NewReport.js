@@ -8,35 +8,35 @@ export default class NewReport extends React.Component {
 	super(props);
 	this.state = {textFieldValue: ''};
     }
-
+    
     _handleTextFieldChange = (e) => {
         this.setState({
             textFieldValue: e.target.value
         });
     }
 
- render() {
-     return (
-	 <form>
-           <p>{this.props.userName}</p>
-           <TextField
-             floatingLabelText="Write your Earthquake Experience."
-             multiLine={true}
-             rows={3}
-	     value={this.state.textFieldValue}
-	     onChange={(e) => this._handleTextFieldChange(e)}
-             />
-           <FlatButton
-             label="Submit"
-             primary={true}
-             onClick={() => this.props.submitNew(this.state.textFieldValue)}
-             />
-	 </form>
-     );
- }
+    render() {
+        return (
+	    <form>
+              <p>{this.props.userName}</p>
+              <TextField
+                floatingLabelText="Write your Earthquake Experience."
+                multiLine={true}
+                rows={3}
+	        value={this.state.textFieldValue}
+	        onChange={(e) => this._handleTextFieldChange(e)}
+                />
+                <FlatButton
+                  label="Submit"
+                  primary={true}
+                  onClick={() => this.props.submitNew(this.state.textFieldValue)}
+                  />
+	    </form>
+        );
+    }
 }
 
 NewReport.propTypes = {
     userName: PropTypes.string.isRequired,
     submitNew: PropTypes.func.isRequired
-}
+};

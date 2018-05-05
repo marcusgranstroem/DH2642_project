@@ -1,12 +1,8 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
+import PropTypes from 'prop-types';
 
 export default class Login extends React.Component {
-
-    responseGoogle = (response) => {
-	console.log(response);
-        this.props.handleLogin(response);
-    };
 
     render() {
 	return (
@@ -14,10 +10,15 @@ export default class Login extends React.Component {
 	      <GoogleLogin
 		clientId="11679518606-kas6j3im0oh402929qfg1q5ciup4o9b5.apps.googleusercontent.com"
 		buttonText="Login"
-		onSuccess={this.responseGoogle}
-		onFailure={this.responseGoogle}
+		onSuccess={this.props.handleLogin}
+		onFailure={this.props.errorLogin}
 		/>
 	    </div>
 	);
     }
 }
+
+Login.propTypes = {
+    handleLogin: PropTypes.func.isRequired,
+    errorLogin: PropTypes.func.isRequired
+};
