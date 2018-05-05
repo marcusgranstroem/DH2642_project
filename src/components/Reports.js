@@ -31,7 +31,7 @@ export default class Reports extends React.Component {
             <FlatButton label="Write New"
                         primary={true}
                         onClick={this.handleWriting}
-	                disabled={this.state.writing}
+	                disabled={this.state.writing || !this.props.isLoggedIn}
                         />,
         ];
 
@@ -42,7 +42,6 @@ export default class Reports extends React.Component {
         else {
             let v = this.props.reports;
 
-            console.log(v);
             // Loop trough all reports for current earthquake
             for(var key in v)
                 if(v.hasOwnProperty(key)) {
@@ -60,7 +59,7 @@ export default class Reports extends React.Component {
         if (this.state.writing)
             reports.push(
                 <div key={uuidv1()}>
-                  <NewReportContainer 
+                  <NewReportContainer
                              submitNew={this.handleSubmit}/>
                   <Divider/>
                 </div>
