@@ -3,7 +3,7 @@ import logo from '../logo.svg';
 import Drawer from 'material-ui/Drawer';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import DatePicker from 'material-ui/DatePicker';
-import Login from './Login.js';
+import LoginContainer from '../containers/LoginContainer.js';
 import TextField from 'material-ui/TextField';
 import MaterialIcon from 'material-icons-react';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -60,7 +60,7 @@ export default class Banner extends React.Component {
                 </h1>
               </div>
               <div className="End-bar">
-		<Login handleLogin={this.props.handleLogin} errorLogin={this.props.errorLogin}/>
+		<LoginContainer/>
                 <FloatingActionButton mini={true}
                                       onClick={this.handleToggle}
                                       className="Search-button">

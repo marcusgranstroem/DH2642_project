@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Banner from '../components/Banner.js';
-import { fetchEarthquakes, handleLogin, errorLogin } from '../actions';
+import { fetchEarthquakes } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -9,9 +9,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchEarthquakes: (start, end, magnitude) => dispatch(fetchEarthquakes(start, end, magnitude)),
-    handleLogin: (userToken) => dispatch(handleLogin(userToken)),
-    errorLogin: (response) => dispatch(errorLogin(response))
+    fetchEarthquakes: (start, end, magnitude) => dispatch(fetchEarthquakes(start, end, magnitude))
 });
 
 export default connect(
