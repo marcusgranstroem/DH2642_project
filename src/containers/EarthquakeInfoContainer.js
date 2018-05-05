@@ -18,6 +18,7 @@ const mapStateToProps = (state, ownProps) => {
     }
 
     let realDate = new Date(earthquake.properties.time);
+
   return {
       name: title,
       lat: earthquake.geometry.coordinates[1],
@@ -27,7 +28,6 @@ const mapStateToProps = (state, ownProps) => {
       quakeId: ownProps.quakeId
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => ({
     fetchUserReports: (quakeId) => dispatch(fetchUserReports(quakeId))

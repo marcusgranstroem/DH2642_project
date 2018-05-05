@@ -36,19 +36,22 @@ export default class Reports extends React.Component {
         ];
 
         const reports = [];
-
+        
         if (!this.props.reports) //Check if there are no Reports
             reports.push(<p>No user reports yet.</p>);
         else {
             let v = this.props.reports;
 
-            console.log(v);
             // Loop trough all reports for current earthquake
             for(var key in v)
                 if(v.hasOwnProperty(key)) {
+                    var timestamp = new Date(Number(key));
+                    var date = timestamp.toLocaleDateString();
+                    var time = timestamp.toLocaleTimeString();
+
                     reports.push(
                         <div key={uuidv1()}>
-                          <ListItem primaryText={v[key]['nickName']}
+                          <ListItem primaryText={v[key]['nickName'] + " " + date + " " + time}
                                     secondaryText={<p>{v[key]['comment']}</p>}
                                     disabled={true}/>
                           <Divider/>
@@ -65,7 +68,6 @@ export default class Reports extends React.Component {
                   <Divider/>
                 </div>
             );
-
 
         return (
             <Dialog title="User Reports"

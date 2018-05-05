@@ -202,7 +202,6 @@ export function errorLogin(response) {
 export function postReport(quakeId, userName, comment) {
     const thunk = dispatch => {
         // Get current time in ms (UNIX time)
-        console.log(userName);
         let timestamp = new Date().getTime();
         let reportsRef = database.ref('/userReports/'+ quakeId + '/');
         reportsRef.update({
