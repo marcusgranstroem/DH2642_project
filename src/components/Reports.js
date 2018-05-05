@@ -26,7 +26,7 @@ export default class Reports extends React.Component {
         const actions = [
             <FlatButton label="Close"
                         secondary={true}
-                        onClick={this.props.close}
+                        onClick={() => {this.props.close(); this.handleSubmit();}}
                         />,
             <FlatButton label="Write New"
                         primary={true}
