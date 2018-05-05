@@ -74,8 +74,9 @@ export default class Banner extends React.Component {
                         width={300}
                         open={this.state.open}
                         openSecondary={true}
-                        onRequestChange={(open => this.setState({open}))
-                  }>
+                        onRequestChange={(open => this.setState({open}))}
+                        disabeSwipeToOpen={true}
+                >
                 <TextField type="number"
                         hintText="Minimum Magnitude"
                         onChange={(e) => {
