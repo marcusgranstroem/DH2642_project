@@ -6,6 +6,7 @@ import DatePicker from 'material-ui/DatePicker';
 import LoginContainer from '../containers/LoginContainer.js';
 import TextField from 'material-ui/TextField';
 import MaterialIcon from 'material-icons-react';
+import NickContainer from '../containers/NickContainer.js';
 import CircularProgress from 'material-ui/CircularProgress';
 import PropTypes from 'prop-types';
 
@@ -45,7 +46,7 @@ export default class Banner extends React.Component {
         var loader;
         if (this.props.searching)
             loader = (<CircularProgress/>);
-        var login;
+        var login = (<NickContainer/>);
         if (!this.props.isLoggedIn)
             login = (<LoginContainer/>);
         return (

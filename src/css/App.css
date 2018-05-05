@@ -1,3 +1,6 @@
+@import url(~/node_modules/bootstrap/dist/css/bootstrap.css);
+@import url(~/node_modules/bootstrap/dist/css/bootstrap-theme.css);
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
