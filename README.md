@@ -49,9 +49,11 @@ In the root of the project; run `make dependencies`
 Place file config.js in the src folder (If you don't have an API key for google maps then it will still work, you will just get warnings).
 
 ```js
-const google_map_api_key = '';
+const api_keys = {
+    google_map_api_key: '<API FOR GOOGLE MAPS GOES HERE>',
+    firebase_db_key: 'FIREBASE API KEY FOR QUAKESEE APP GOES HERE'
+};
 
-export default google_map_api_key;
+export default api_keys;
 ```
-
 Then use `npm-start` to start the application. (Further set up and dependency installation may be required, we reccomend using the link instead).
