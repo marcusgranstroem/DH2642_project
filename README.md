@@ -50,7 +50,7 @@ Place file config.js in the src folder (If you don't have an API key for google 
 
 ```js
 const api_keys = {
-    google_map_api_key: '<API FOR GOOGLE MAPS GOES HERE>',
+    google_map_api_key: '<API KEY FOR GOOGLE MAPS GOES HERE>',
     firebase_db_key: 'FIREBASE API KEY FOR QUAKESEE APP GOES HERE'
 };
 
