@@ -92,7 +92,7 @@ table {
 
   .End-bar {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: column;
     position: fixed;
     right: 0;
@@ -119,18 +119,12 @@ table {
   font-weight: bold;
   font-family: Roboto; }
 
-.User-reports {
-  max-height: 80vh; }
-
 .Post {
   margin: 20px; }
 
 .Post p {
   margin-bottom: 10px; }
 
-@media only screen and (max-width: 600px) {
-  .User-reports {
-    max-height: 100vh; } }
 html {
   background-color: #222; }
 
