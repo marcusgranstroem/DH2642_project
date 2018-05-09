@@ -1,5 +1,6 @@
 import fetch from 'cross-fetch';
 import database from './firebase';
+const uuidv1 = require('uuid/v1');
 
 export const REQUEST_EARTHQUAKES = 'REQUEST_EARTHQUAKES';
 function requestEarthquakes() {
@@ -189,11 +190,28 @@ export function closeErrorMessage() {
 export function handleLogin(response) {
     const thunk = dispatch => {
 
-        let userToken = response.googleId;
+	// WARNING
+	// REMOVE RANDOM BEFORE DEPLOY
+        let userToken = response.googleId + Math.floor(Math.random() * 10);
         database.ref('/userProfiles/' + userToken + '/nickName/').once("value")
             .then(nickName =>
                   {
-                      dispatch(userLogin(nickName.val(), userToken));
+		      // User logs in for the first time
+		      let loggStr = "nickName: " + nickName; 
+		      console.log(loggStr);
+		      if(typeof(nickName) !== 'string') {
+			  nickName = "user" + uuidv1();
+			  nickName = nickName.slice(0, 20); // Shorter default name
+			  let userRef = database.ref('/userProfiles/'+
+							userToken + '/');
+			  userRef.update({
+			      "nickName": nickName,
+        }) 
+		      } else {
+			  nickName = nickName.val();
+		      }
+		      
+                      dispatch(userLogin(nickName, userToken));
                   }
             );
     };
