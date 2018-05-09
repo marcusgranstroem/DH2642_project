@@ -3,53 +3,22 @@
 @import './partials/layout.scss';
 @import './partials/reset.scss';
 @import './partials/typography.scss';
+@import './partials/colors.scss';
 
 // Import modules:
 @import './modules/all.scss';
 
 html {
-    background-color: #222;
+    background-color: $background-color;
 }
 
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40px;
-}
-
-.Developed-by {
-    align-self: center;
-    font-size: 0.8em;
-}
-
-.Search-bar {
-    display: flex;
-}
-
-.App-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: #222;
-  height: 70px;
-  padding: 5px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.2em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.End-bar, .User-menu {
-    display: flex;
-    align-items: center;
-}
-
-.Login, .Search-button, .User-button, .User-name {
-    margin: 10px;
+h3 {
+    color: $white;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }

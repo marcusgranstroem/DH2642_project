@@ -1,0 +1,79 @@
+.App-logo {
+  height: 40px;
+}
+
+.Developed-by {
+    align-self: center;
+    font-size: 0.8em;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $background-color;
+  height: 70px;
+  padding: 5px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.2em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.End-bar, .User-menu {
+    display: flex;
+    align-items: center;
+}
+
+.Login, .Search-button, .User-button, .User-name {
+    margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .App-logo {
+      display: none;
+    }
+
+    .Developed-by {
+        display: none;
+    }
+
+    .App-header {
+      visibility: hidden;
+      height: 0px;
+    }
+
+    .App-title {
+      display: none;
+    }
+
+    .App-intro {
+      display: none;
+    }
+
+    .End-bar {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        position: fixed;
+        right: 0;
+        height: 120px;
+        z-index: 10;
+        visibility: visible;
+    }
+
+    .User-menu {
+        flex-direction: column;
+    }
+
+    .Login, .Search-button, .User-button, .User-name {
+        margin: 10px;
+        z-index: 10;
+
+    }
+}

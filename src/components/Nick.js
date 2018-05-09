@@ -4,7 +4,6 @@ import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import MaterialIcon from 'material-icons-react';
 import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
 
 import PropTypes from 'prop-types';
 

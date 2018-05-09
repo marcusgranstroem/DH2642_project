@@ -3,11 +3,11 @@ import api_keys from '../config.js';
 import GoogleMapReact from 'google-map-react';
 import React from 'react';
 import map_style from '../map_style.js';
-import ReportsContainer from '../containers/ReportsContainer.js'; 
+import ReportsContainer from '../containers/ReportsContainer.js';
 
-const Map = ({center={lat:0, lng:0}, zoom=4, options={minZoom: 4, maxZoom: 13, styles: map_style 
+const Map = ({center={lat:0, lng:0}, zoom=4, options={minZoom: 4, maxZoom: 13, styles: map_style
 }, quakes}) => (
-    <div className="Map" style={{ height: '88.9vh', width: '100%'}}>
+    <div className="Map">
 	<ReportsContainer/>
         <GoogleMapReact
           bootstrapURLKeys={{ key: api_keys.google_map_api_key }}
