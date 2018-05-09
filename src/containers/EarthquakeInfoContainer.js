@@ -25,7 +25,8 @@ const mapStateToProps = (state, ownProps) => {
       long: earthquake.geometry.coordinates[0],
       mag: earthquake.properties.mag,
       date: realDate.toLocaleDateString() + " " + realDate.toLocaleTimeString(),
-      quakeId: ownProps.quakeId
+      quakeId: ownProps.quakeId,
+      close: ownProps.close
   };
 };
 
