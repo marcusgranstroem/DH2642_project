@@ -8,7 +8,7 @@ export default class NewReport extends React.Component {
 	super(props);
 	this.state = {textFieldValue: ''};
     }
-    
+
     _handleTextFieldChange = (e) => {
         this.setState({
             textFieldValue: e.target.value
@@ -23,6 +23,7 @@ export default class NewReport extends React.Component {
                 floatingLabelText="Write your Earthquake Experience."
                 multiLine={true}
                 rows={3}
+                autoFocus
 	        value={this.state.textFieldValue}
 	        onChange={(e) => this._handleTextFieldChange(e)}
                 />
