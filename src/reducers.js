@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import {
     CLOSE_ERROR,
     CLOSE_REPORTS,
+    ERROR_NICKNAME_CHANGE,
     INVALIDATE_EARTHQUAKES,
     POST_USER_REPORT,
     RECIEVE_EARTHQUAKES,
@@ -112,6 +113,11 @@ function errorReducer(state, action) {
 	   errorMessage: action.error,
 	   displayError: true});
        
+   case ERROR_NICKNAME_CHANGE:
+       return Object.assign({}, state, {
+	   errorMessage: action.error,
+	   displayError: true});
+
    case CLOSE_ERROR:
        return Object.assign({}, state, {displayError: false});
        

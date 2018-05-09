@@ -90,6 +90,14 @@ function updateNickname(newName) {
     };
 }
 
+export const ERROR_NICKNAME_CHANGE = 'ERROR_NICKNAME_CHANGE';
+function errorNicknameChange(msg) {
+    return {
+        type: ERROR_NICKNAME_CHANGE,
+	error: msg
+    };
+}
+
 /*
  * Fetch earthquakes from https://earthquake.usgs.gov
  * Result is limited to reduce the amount of data recieved from
@@ -251,13 +259,39 @@ export function postReport(quakeId, userName, comment) {
 
 export function changeNickname(newName, userToken) {
     const thunk = dispatch => {
-	let reportsRef = database.ref('/userProfiles/'+ userToken + '/');
-        reportsRef.update({
-            "nickName": newName,
-        }) 
-            .then(
+	// Not in range a-zA-Z0-9
+	let regexp = /[^a-zA-Z0-9]/;
+	
+	if(newName.length < 4) {
+	    let msg = ({
+		error: "Change nickname error",
+		details: "Nickname has to be at least 4 characters long."
+            })
+	    dispatch(errorNicknameChange(msg));
+	}
+	else if(newName.length > 20) {
+	    let msg = ({
+		error: "Change nickname error",
+		details: "Nickname has to be at most 20 characters long."
+            })
+	    dispatch(errorNicknameChange(msg));
+	}
+	else if(newName.match(regexp)) {
+	    let msg = ({
+		error: "Change nickname error",
+		details: "Nickname contains invalid characters."
+		    + " Only alphanumeric values in range a-z is allowed."
+            })
+	    dispatch(errorNicknameChange(msg));
+	} else {
+	    let reportsRef = database.ref('/userProfiles/'+ userToken + '/');
+            reportsRef.update({
+		"nickName": newName,
+            }) 
+		.then(
 		dispatch(updateNickname(newName)));
-    };
+	}
+    }
     
     return thunk;
 }
