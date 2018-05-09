@@ -44,7 +44,7 @@ table {
 
 @media only screen and (max-width: 600px) {
   .Map {
-    height: 99.0vh; } }
+    height: 95.0vh; } }
 .App-logo {
   height: 40px; }
 
@@ -101,7 +101,8 @@ table {
     visibility: visible; }
 
   .User-menu {
-    flex-direction: column; }
+    flex-direction: column;
+    align-items: flex-end; }
 
   .Login, .Search-button, .User-button, .User-name {
     margin: 10px;
@@ -125,6 +126,9 @@ table {
 .Post p {
   margin-bottom: 10px; }
 
+@media only screen and (max-width: 600px) {
+  .User-reports-content {
+    height: 100vh; } }
 html {
   background-color: #222; }
 
