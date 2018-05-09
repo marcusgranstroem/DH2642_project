@@ -9,3 +9,9 @@
 .Post p {
     margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    .User-reports {
+        max-height: 100vh;
+    }
+}

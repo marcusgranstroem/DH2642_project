@@ -1,7 +1,7 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import {List, ListItem} from 'material-ui/List';
+import {List} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import NewReportContainer from '../containers/NewReportContainer.js';
 import PropTypes from 'prop-types';
