@@ -1,4 +1,13 @@
-
+.Map {
+    height: 88.9vh;
+    width: 100%;
+}
 .gmnoprint.gm-style-cc + button, .gm-fullscreen-control {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .Map {
+        height: 99.0vh;
+    }
 }

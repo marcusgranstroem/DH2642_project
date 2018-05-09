@@ -35,24 +35,22 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.Map {
+  height: 88.9vh;
+  width: 100%; }
+
 .gmnoprint.gm-style-cc + button, .gm-fullscreen-control {
   display: none; }
 
-html {
-  background-color: #222; }
-
-.App {
-  text-align: center; }
-
+@media only screen and (max-width: 600px) {
+  .Map {
+    height: 99.0vh; } }
 .App-logo {
   height: 40px; }
 
 .Developed-by {
   align-self: center;
   font-size: 0.8em; }
-
-.Search-bar {
-  display: flex; }
 
 .App-header {
   display: flex;
@@ -74,5 +72,72 @@ html {
 
 .Login, .Search-button, .User-button, .User-name {
   margin: 10px; }
+
+@media only screen and (max-width: 600px) {
+  .App-logo {
+    display: none; }
+
+  .Developed-by {
+    display: none; }
+
+  .App-header {
+    visibility: hidden;
+    height: 0px; }
+
+  .App-title {
+    display: none; }
+
+  .App-intro {
+    display: none; }
+
+  .End-bar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    height: 120px;
+    z-index: 10;
+    visibility: visible; }
+
+  .User-menu {
+    flex-direction: column; }
+
+  .Login, .Search-button, .User-button, .User-name {
+    margin: 10px;
+    z-index: 10; } }
+.Login-button {
+  display: inline-block;
+  background: #d14836;
+  color: white;
+  width: 60px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Roboto; }
+
+.User-reports {
+  max-height: 80vh; }
+
+.Post {
+  margin: 20px; }
+
+.Post p {
+  margin-bottom: 10px; }
+
+html {
+  background-color: #222; }
+
+.App {
+  text-align: center; }
+
+h3 {
+  color: #FFFFFF;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px; }
 
 /*# sourceMappingURL=App.css.map */

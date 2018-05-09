@@ -55,7 +55,7 @@ export default class Beamer extends React.Component {
             		onRequestClose={this.handleRequestClose}
             		animation={PopoverAnimationVertical}
             		>
-		<EarthquakeInfoContainer quakeId={this.props.id}/>
+		<EarthquakeInfoContainer quakeId={this.props.id} close={this.handleRequestClose}/>
               </Popover>
 
 	    </div>

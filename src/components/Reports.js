@@ -36,7 +36,7 @@ export default class Reports extends React.Component {
         ];
 
         const reports = [];
-        
+
         if (!this.props.reports) //Check if there are no Reports
             reports.push(<p>No user reports yet.</p>);
         else {
@@ -50,10 +50,11 @@ export default class Reports extends React.Component {
                     var time = timestamp.toLocaleTimeString();
 
                     reports.push(
-                        <div key={uuidv1()}>
-                          <ListItem primaryText={v[key]['nickName'] + " " + date + " " + time}
-                                    secondaryText={<p>{v[key]['comment']}</p>}
-                                    disabled={true}/>
+                        <div key={uuidv1()} className="Post">
+                        <h3>
+                            {v[key]['nickName'] + " " + date + " " + time}
+                        </h3>
+                        {<p>{v[key]['comment']}</p>}
                           <Divider/>
                         </div>
                     );
@@ -70,7 +71,9 @@ export default class Reports extends React.Component {
             );
 
         return (
-            <Dialog title="User Reports"
+            <Dialog
+                    className="User-reports"
+                    title="User Reports"
                     actions={actions}
                     modal={true}
                     open={this.props.open}
