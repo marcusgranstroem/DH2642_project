@@ -201,6 +201,7 @@ export function handleLogin(response) {
 		      console.log(loggStr);
 		      if(typeof(nickName) !== 'string') {
 			  nickName = "user" + uuidv1();
+			  nickName = nickName.slice(0, 20); // Shorter default name
 			  let userRef = database.ref('/userProfiles/'+
 							userToken + '/');
 			  userRef.update({
