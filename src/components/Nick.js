@@ -16,50 +16,59 @@ export default class NewReport extends React.Component {
             open: false
         };
     }
-
+    
     _handleTextFieldChange = (e) => {
         this.setState({
             textFieldValue: e.target.value
         });
     }
-
+    
     handleToggle = () => this.setState({open: !this.state.open});
-
+    
     handleSubmit = () => {
         this.setState({
             textFieldValue: '',
             open: false
         });
     }
-
+    
     render() {
         return (
-            <div className="User-menu">
-                <p>{this.props.userName}</p>
-        	    <IconMenu
-                    iconButtonElement={<FloatingActionButton mini={true} className="User-button"><MaterialIcon icon="account_circle"/></FloatingActionButton>}
-                    onRequestChange={this.handleToggle}
-                    open={this.state.open}
-                >
-                      <p className="User-name">Change User Name</p>
-                      <TextField
-                        floatingLabelText={this.props.userName}
-                        multiLine={true}
-                        rows={1}
-        	        value={this.state.textFieldValue}
-        	        onChange={(e) => this._handleTextFieldChange(e)}
-                        />
-                        <FlatButton
-                          label="Submit"
-                          primary={true}
-                          onClick={() => {console.log("Hello"); this.handleSubmit();}}
-                          />
-        	    </IconMenu>
-            </div>
+	    <div className="User-menu">
+	      <p>{this.props.userName}</p>
+              <IconMenu
+		iconButtonElement={
+			<FloatingActionButton mini={true} className="User-button">
+			      <MaterialIcon icon="account_circle"/>
+			</FloatingActionButton>}
+			onRequestChange={this.handleToggle}
+			open={this.state.open}
+			>
+                <p className="User-name">Change User Name</p>
+                <TextField
+		  floatingLabelText={this.props.userName}
+		  multiLine={true}
+		  rows={1}
+		  value={this.state.textFieldValue}
+		  onChange={(e) => this._handleTextFieldChange(e)}
+                  />
+                  <FlatButton
+		    label="Submit"
+		    primary={true}
+		    onClick={() => {
+			this.props.changeNickname(
+			    this.state.textFieldValue,
+			    this.props.userToken);
+		        this.handleSubmit();}}
+                    />
+              </IconMenu>
+	    </div>
         );
     }
 }
 
 NewReport.propTypes = {
-    userName: PropTypes.string.isRequired
+    userName: PropTypes.string.isRequired,
+    userToken: PropTypes.string.isRequired,
+    changeNickname: PropTypes.func.isRequired
 };
