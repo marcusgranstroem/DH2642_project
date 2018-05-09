@@ -118,7 +118,8 @@ table {
   border: 1px solid transparent;
   font-size: 16px;
   font-weight: bold;
-  font-family: Roboto; }
+  font-family: Roboto;
+  text-align: center; }
 
 .Post {
   margin: 20px; }

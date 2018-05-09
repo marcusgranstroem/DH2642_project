@@ -198,9 +198,7 @@ export function closeErrorMessage() {
 export function handleLogin(response) {
     const thunk = dispatch => {
 
-	// WARNING
-	// REMOVE RANDOM BEFORE DEPLOY
-        let userToken = response.googleId + Math.floor(Math.random() * 10);
+        let userToken = response.googleId;
         database.ref('/userProfiles/' + userToken + '/nickName/').once("value")
             .then(nickName =>
                   {
