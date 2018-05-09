@@ -50,10 +50,11 @@ function closeReports() {
 }
 
 export const USER_LOGIN = 'USER_LOGIN';
-function userLogin(nickName) {
+function userLogin(nickName, userToken) {
     return {
         type: USER_LOGIN,
-        nickName: nickName
+        nickName: nickName,
+        userToken: userToken
     };
 }
 
@@ -80,24 +81,33 @@ function closeError() {
     };
 }
 
+export const UPDATE_NICKNAME = 'UPDATE_NICKNAME';
+function updateNickname(newName) {
+    return {
+        type: UPDATE_NICKNAME,
+	nickName: newName
+    };
+}
+
 /*
  * Fetch earthquakes from https://earthquake.usgs.gov
  * Result is limited to reduce the amount of data recieved from
  */
 export function fetchEarthquakes(start=0, end=0, magnitude=0) {
     const thunk = dispatch => {
-  	// Limit amount of return values
+
+	// Limit amount of return values
   	var limit = 200;
   	dispatch(requestEarthquakes());
 
   	if(magnitude < 0) {
-        dispatch(invalidateEarthquakes({
-            error: "Magnitude Error",
-            details: "Magnitude set to a negative value."
-        }));
-
+            dispatch(invalidateEarthquakes({
+		error: "Magnitude Error",
+		details: "Magnitude set to a negative value."
+            }));
   	    magnitude = 0;
   	}
+	
   	// API only handles timeformat in ISO8601
   	if(start !== 0 && start !=="") {
   	    let d = new Date(start);
@@ -115,6 +125,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   	    end = d.toISOString();
   	}
 
+	// URL for earthquake api
         let url =
             `https://earthquake.usgs.gov/fdsnws/event/1/query?` +
             `format=geojson&` +
@@ -125,42 +136,38 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
 
   	return fetch(url)
     .then(
-        response => response.json()
-    )
+        response => response.json())
             .then(json =>
                   // Here, we update the app state with the results of the API call.
-                  dispatch(recieveEarthquakes(json, limit))
-                 )
+                  dispatch(recieveEarthquakes(json, limit)))
             .catch(
                 (error) => {
-                            dispatch(invalidateEarthquakes({error: "Search Error", details: error.toString()}));
-                        }
-            );
+                    dispatch(invalidateEarthquakes({
+			error: "Search Error",
+			details: error.toString()}));
+                        });
     };
+
     thunk.meta = {
         debounce: {
             time: 400,
             key: 'SEARCH'
         }
     };
+
     return thunk;
 }
 
 export function fetchUserReports(quakeId) {
     const thunk = dispatch => {
-        //let reports = [];
         dispatch(requestReports(quakeId));
-
-        // Callback function to retrieve all values from path in db
-        //var callback = snap => {
-          //  reports.push(snap.val());
-        //};
 
         database.ref('/userReports/' + quakeId + '/').once("value")
             .then((reports) => {
                 dispatch(recieveReports(reports.val()));
             });
     };
+    
     return thunk;
 }
 
@@ -175,6 +182,7 @@ export function closeErrorMessage() {
     const thunk = dispatch => {
     	dispatch(closeError());
     };
+    
     return thunk;
 }
 
@@ -185,10 +193,11 @@ export function handleLogin(response) {
         database.ref('/userProfiles/' + userToken + '/nickName/').once("value")
             .then(nickName =>
                   {
-                      dispatch(userLogin(nickName.val()));
+                      dispatch(userLogin(nickName.val(), userToken));
                   }
             );
     };
+    
     return thunk;
 }
 
@@ -204,6 +213,7 @@ export function postReport(quakeId, userName, comment) {
         // Get current time in ms (UNIX time)
         let timestamp = new Date().getTime();
         let reportsRef = database.ref('/userReports/'+ quakeId + '/');
+	
         reportsRef.update({
                 [timestamp]: {
                     "nickName": userName,
@@ -211,8 +221,25 @@ export function postReport(quakeId, userName, comment) {
                 }
         }) 
             .then(
-                dispatch(postUserReport({[timestamp]: {'comment': comment, 'nickName': userName}})
-                        ));
-};
+                dispatch(postUserReport({[timestamp]: {
+		    'comment': comment,
+		    'nickName': userName
+		}}))
+	    );
+    };
+    
+    return thunk;
+}
+
+export function changeNickname(newName, userToken) {
+    const thunk = dispatch => {
+	let reportsRef = database.ref('/userProfiles/'+ userToken + '/');
+        reportsRef.update({
+            "nickName": newName,
+        }) 
+            .then(
+		dispatch(updateNickname(newName)));
+    };
+    
     return thunk;
 }
