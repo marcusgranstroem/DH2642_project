@@ -127,8 +127,8 @@ table {
   margin-bottom: 10px; }
 
 @media only screen and (max-width: 600px) {
-  .User-reports-content {
-    height: 100vh; } }
+  .User-reports-title {
+    display: none; } }
 html {
   background-color: #222; }
 

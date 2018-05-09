@@ -22,7 +22,7 @@ export default class NewReport extends React.Component {
               <TextField
                 floatingLabelText="Write your Earthquake Experience."
                 multiLine={true}
-                rows={3}
+                rows={1}
                 autoFocus
 	        value={this.state.textFieldValue}
 	        onChange={(e) => this._handleTextFieldChange(e)}

@@ -31,7 +31,7 @@ export default class Reports extends React.Component {
             <FlatButton label="Write New"
                         primary={true}
                         onClick={this.handleWriting}
-	                disabled={this.state.writing}
+	                disabled={this.state.writing || !this.props.isLoggedIn}
                         />,
         ];
 
@@ -78,24 +78,7 @@ export default class Reports extends React.Component {
                     modal={true}
                     open={this.props.open}
                     autoScrollBodyContent={true}
-                    repositionOnUpdate={false}
-                    autoDetectWindowHeight={false}
-                    bodyClassName="User-reports-content"
-                    contentStyle={{
-                        width: '100%',
-                        maxWidth: '450px',
-                        maxHeight: '100% !important'
-                    }}
-                    bodyStyle={{
-                        maxHeight: '100% !important'
-                    }}
-                    style={{
-                         paddingTop:'0 !important',
-                         marginTop:'-100vh !important',
-                         bottom: '0 !important',
-                         overflow: 'scroll !important',
-                         height: '80vh !important'
-                    }}
+                    titleClassName="User-reports-title"
                     >
               <List>
                 {reports}
