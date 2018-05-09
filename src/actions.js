@@ -203,9 +203,7 @@ export function handleLogin(response) {
             .then(nickName =>
                   {
 		      // User logs in for the first time
-		      let loggStr = "nickName: " + nickName; 
-		      console.log(loggStr);
-		      if(typeof(nickName) !== 'string') {
+		      if(typeof nickName.val() !== 'string') {
 			  nickName = "user" + uuidv1();
 			  nickName = nickName.slice(0, 20); // Shorter default name
 			  let userRef = database.ref('/userProfiles/'+
