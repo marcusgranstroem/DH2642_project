@@ -51,60 +51,65 @@ export default class Banner extends React.Component {
             login = (<LoginContainer/>);
         return (
             <header className="App-header">
-              <h2 className="Developed-by">
-                Developed by Nathan Bhat <br/>
-                & Marcus Granström
-              </h2>
-              <div className="App-logotitle">
-                <img src={logo}
-                     className="App-logo"
-                     alt="logo"/>
-                <h1 className="App-title">
-                  QuakeSee
-                </h1>
-              </div>
-              <div className="End-bar">
-		            {login}
-                <FloatingActionButton mini={true}
-                                      onClick={this.handleToggle}
-                                      className="Search-button">
-                  <MaterialIcon icon="search"/>
-                </FloatingActionButton>
-                <Drawer docked={false}
+                <h2 className="Developed-by">
+                    Developed by Nathan Bhat <br/>
+                    & Marcus Granström
+                </h2>
+                <div className="App-logotitle">
+                    <img src={logo}
+                        className="App-logo"
+                        alt="logo"/>
+                    <h1 className="App-title">
+                        QuakeSee
+                    </h1>
+                </div>
+                <div className="End-bar">
+                    {login}
+                    <FloatingActionButton
+                        mini={true}
+                        onClick={this.handleToggle}
+                        className="Search-button">
+                        <MaterialIcon icon="search"/>
+                    </FloatingActionButton>
+                    <Drawer
+                        docked={false}
                         width={300}
                         open={this.state.open}
                         openSecondary={true}
                         onRequestChange={(open => this.setState({open}))}
                         disabeSwipeToOpen={true}
-                >
-                <TextField type="number"
-                        hintText="Minimum Magnitude"
-                        onChange={(e) => {
+                    >
+                        <TextField
+                            type="number"
+                            hintText="Minimum Magnitude"
+                            onChange={(e) => {
                             this._handleTextFieldChange(e);
                             this.props.fetchEarthquakes(
-                                this.state.minDate,
-                                this.state.maxDate,
-                                e.target.value);}
-                  }/>
-                <DatePicker hintText="Minimum Date"
-                        onChange={(e, date) => {
+                            this.state.minDate,
+                            this.state.maxDate,
+                            e.target.value);}
+                        }/>
+                        <DatePicker
+                            hintText="Minimum Date"
+                            onChange={(e, date) => {
                             this._handleMinDateChange(e, date);
                             this.props.fetchEarthquakes(
-                                date,
-                                this.state.maxDate,
-                                this.state.mag);}
-                  }/>
-                <DatePicker hintText="Maximum Date"
-                        onChange={(e, date) => {
+                            date,
+                            this.state.maxDate,
+                            this.state.mag);}
+                        }/>
+                        <DatePicker
+                            hintText="Maximum Date"
+                            onChange={(e, date) => {
                             this._handleMaxDateChange(e, date);
                             this.props.fetchEarthquakes(
-                                this.state.minDate,
-                                date,
-                                this.state.mag);}
-                  }/>
-                  {loader}
-                </Drawer>
-              </div>
+                            this.state.minDate,
+                            date,
+                            this.state.mag);}
+                        }/>
+                        {loader}
+                    </Drawer>
+                </div>
             </header>
         );
     }

@@ -3,7 +3,8 @@ import Snackbar from 'material-ui/Snackbar';
 import PropTypes from 'prop-types';
 
 const Snack = ({open, message, duration}) => (
-    <Snackbar open={open}
+    <Snackbar
+        open={open}
         message={message}
         autoHideDuration={duration}
     />
