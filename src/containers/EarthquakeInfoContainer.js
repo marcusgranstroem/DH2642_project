@@ -6,15 +6,15 @@ const mapStateToProps = (state, ownProps) => {
     var earthquake = 0;
 
     for (var i = 0; i < state.earthquakeReducer.earthquakes.length; i++) {
-	let tmp = state.earthquakeReducer.earthquakes[i];
-	if(tmp.properties.ids === ownProps.quakeId) {
-	    earthquake = tmp;
-	    break;
-	}
+    	let tmp = state.earthquakeReducer.earthquakes[i];
+    	if(tmp.properties.ids === ownProps.quakeId) {
+    	    earthquake = tmp;
+    	    break;
+    	}
     }
     var title = earthquake.properties.title.replace(/M.*- ?/i, "");
     if (title.length > 32) {
-	title = title.substring(0, 32) + "...";
+    	title = title.substring(0, 32) + "...";
     }
 
     let realDate = new Date(earthquake.properties.time);

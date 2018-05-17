@@ -3,10 +3,10 @@ import Banner from '../components/Banner.js';
 import { fetchEarthquakes } from '../actions';
 
 const mapStateToProps = (state) => {
-  return {
-      searching: state.earthquakeReducer.searching,
-      isLoggedIn: state.loginReducer.isLoggedIn
-  };
+    return {
+        searching: state.earthquakeReducer.searching,
+        isLoggedIn: state.loginReducer.isLoggedIn
+    };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Banner);

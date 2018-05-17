@@ -1,7 +1,5 @@
-var map_style = [
-    {
-        "stylers": [
-            {
+var map_style = [{
+        "stylers": [{
                 "hue": "#ff1a00"
             },
             {
@@ -21,11 +19,9 @@ var map_style = [
     {
         "featureType": "water",
         "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#2D333C"
-            }
-        ]
+        "stylers": [{
+            "color": "#2D333C"
+        }]
     }
 ];
 

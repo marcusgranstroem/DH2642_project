@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 
 import {
     CLOSE_ERROR,
@@ -35,95 +35,116 @@ const initalLoginState = {
 
 const initalErrorState = {
     displayError: false,
-    errorMessage: {error: "", details: ""}
+    errorMessage: {
+        error: "",
+        details: ""
+    }
 };
 
 function earthquakeReducer(state, action) {
-    if(typeof state === 'undefined') state = initalEarthquakeState;
+    if (typeof state === 'undefined') state = initalEarthquakeState;
     switch (action.type) {
-    case REQUEST_EARTHQUAKES:
-        return Object.assign({}, state, {searching: true});
+        case REQUEST_EARTHQUAKES:
+            return Object.assign({}, state, {
+                searching: true
+            });
 
-    case RECIEVE_EARTHQUAKES:
-	return Object.assign({}, state, {
-	    earthquakes: action.earthquakes,
-	    overflow: action.overflow,
-	    searching: false});
+        case RECIEVE_EARTHQUAKES:
+            return Object.assign({}, state, {
+                earthquakes: action.earthquakes,
+                overflow: action.overflow,
+                searching: false
+            });
 
-    default:
-	return state;
-  }
+        default:
+            return state;
+    }
 }
 
 function reportsReducer(state, action) {
-    if(typeof state === 'undefined') state = initalReportsState;
+    if (typeof state === 'undefined') state = initalReportsState;
     switch (action.type) {
-    case CLOSE_REPORTS:
-        return Object.assign({}, state, {displayReports: false});
-	
-    case REQUEST_REPORTS:
-        return Object.assign({}, state, {
-	    displayReports: true,
-	    quakeId: action.quakeId});
-	
-    case RECIEVE_REPORTS:
-        return Object.assign({}, state, {userReports: action.recievedReports});
+        case CLOSE_REPORTS:
+            return Object.assign({}, state, {
+                displayReports: false
+            });
 
-    case POST_USER_REPORT:
-        let merged;
-        if(state.userReports) {
-             merged = Object.assign(state.userReports, action.newPost);
-        } else {
-            merged = action.newPost;
-        }
-        return Object.assign({}, state, {userReports: merged});
-	
-    default:
-        return state;
+        case REQUEST_REPORTS:
+            return Object.assign({}, state, {
+                displayReports: true,
+                quakeId: action.quakeId
+            });
+
+        case RECIEVE_REPORTS:
+            return Object.assign({}, state, {
+                userReports: action.recievedReports
+            });
+
+        case POST_USER_REPORT:
+            let merged;
+            if (state.userReports) {
+                merged = Object.assign(state.userReports, action.newPost);
+            } else {
+                merged = action.newPost;
+            }
+            return Object.assign({}, state, {
+                userReports: merged
+            });
+
+        default:
+            return state;
     }
 }
 
 function loginReducer(state, action) {
-     if(typeof state === 'undefined') state = initalLoginState;
+    if (typeof state === 'undefined') state = initalLoginState;
     switch (action.type) {
-    case USER_LOGIN:
-        return Object.assign({}, state, {
-	    userName: action.nickName,
-	    userToken: action.userToken,
-	    isLoggedIn: true});
-	
-    case UPDATE_NICKNAME:
-	return Object.assign({}, state, {userName: action.nickName});
-	
-    default:
-        return state;
+        case USER_LOGIN:
+            return Object.assign({}, state, {
+                userName: action.nickName,
+                userToken: action.userToken,
+                isLoggedIn: true
+            });
+
+        case UPDATE_NICKNAME:
+            return Object.assign({}, state, {
+                userName: action.nickName
+            });
+
+        default:
+            return state;
     }
 }
 
 function errorReducer(state, action) {
-    if(typeof state === 'undefined') state = initalErrorState;
-   switch (action.type) {
-   case INVALIDATE_EARTHQUAKES:
-       return Object.assign({}, state, {
-	   errorMessage: action.error,
-	   displayError: true});
-       
-   case USER_LOGIN_FAILED:
-       return Object.assign({}, state, {
-	   errorMessage: action.error,
-	   displayError: true});
-       
-   case ERROR_NICKNAME_CHANGE:
-       return Object.assign({}, state, {
-	   errorMessage: action.error,
-	   displayError: true});
+    if (typeof state === 'undefined') state = initalErrorState;
+    switch (action.type) {
+        case INVALIDATE_EARTHQUAKES:
+            return Object.assign({}, state, {
+                errorMessage: action.error,
+                displayError: true
+            });
 
-   case CLOSE_ERROR:
-       return Object.assign({}, state, {displayError: false});
-       
-   default:
-       return state;
-   }
+        case USER_LOGIN_FAILED:
+            return Object.assign({}, state, {
+                errorMessage: action.error,
+                displayError: true
+            });
+
+        case ERROR_NICKNAME_CHANGE:
+            return Object.assign({}, state, {
+                errorMessage: action.error,
+                displayError: true
+            });
+
+        case CLOSE_ERROR:
+            return Object.assign({}, state, {
+                displayError: false
+            });
+
+        default:
+            return state;
+    }
 }
 
 const quakeSeeReducer = combineReducers({

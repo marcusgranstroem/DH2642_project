@@ -25,8 +25,8 @@ const store = createStore(
     firebase.database,
     applyMiddleware(
         createDebounce(), //Allows for debouncing
-	thunkMiddleware, // lets us dispatch() functions
-	loggerMiddleware // neat middleware that logs actions
+    	thunkMiddleware, // lets us dispatch() functions
+    	loggerMiddleware // neat middleware that logs actions
     )
 );
 
@@ -34,12 +34,11 @@ store.dispatch(fetchEarthquakes());
 
 ReactDOM.render(
     <Provider store={store}>
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-	<App />
-      </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+    	   <App />
+        </MuiThemeProvider>
     </Provider>,
     document.getElementById('root')
 );
 
 registerServiceWorker();
- 
