@@ -116,6 +116,14 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
             }));
   	    magnitude = 0;
   	}
+
+    if(magnitude > 10) {
+        dispatch(invalidateEarthquakes({
+            error: "Magnitude Error",
+            details: "Magnitude set to a value larger than 10."
+            }));
+        magnitude = 10;
+    }
 	
   	// API only handles timeformat in ISO8601
   	if(start !== 0 && start !=="") {

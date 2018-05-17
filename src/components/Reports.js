@@ -2,6 +2,7 @@ import Dialog from 'material-ui/Dialog';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
 import {List} from 'material-ui/List';
+import LoginContainer from '../containers/LoginContainer.js';
 import NewReportContainer from '../containers/NewReportContainer.js';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -24,19 +25,29 @@ export default class Reports extends React.Component {
     };
     
     render() {
-        const actions = [
-            <FlatButton label="Close"
+        var actions;
+        if(this.props.isLoggedIn)
+            actions = [
+                <FlatButton label="Close"
                     secondary={true}
                     onClick={() => {this.props.close(); this.handleSubmit();}}
-            />,
-            <FlatButton label="Write New"
+                />,
+                <FlatButton label="Write New"
                     primary={true}
                     onClick={this.handleWriting}
-	            disabled={this.state.writing || !this.props.isLoggedIn}
-            />,
-        ];
+                    disabled={this.state.writing || !this.props.isLoggedIn}
+                />,
+            ];
+        else
+            actions = [
+                <FlatButton label="Close"
+                    secondary={true}
+                    onClick={() => {this.props.close(); this.handleSubmit();}}
+                />,
+                <LoginContainer/>,
+            ];
 
-        const reports = [];
+        var reports = [];
 
         if (!this.props.reports) //Check if there are no Reports
             reports.push(<p>No user reports yet.</p>);
