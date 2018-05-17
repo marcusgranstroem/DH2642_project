@@ -3,10 +3,10 @@ import Nick from '../components/Nick.js';
 import { changeNickname } from '../actions';
 
 const mapStateToProps = (state) => {
-  return {
-      userName: state.loginReducer.userName,
-      userToken: state.loginReducer.userToken
-  };
+    return {
+        userName: state.loginReducer.userName,
+        userToken: state.loginReducer.userToken
+    };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Nick);

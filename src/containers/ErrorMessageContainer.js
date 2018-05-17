@@ -3,10 +3,10 @@ import ErrorMessage from '../components/ErrorMessage.js';
 import { closeErrorMessage } from '../actions';
 
 const mapStateToProps = (state) => {
-  return {
-      open: state.errorReducer.displayError,
-      message: state.errorReducer.errorMessage
-  };
+    return {
+        open: state.errorReducer.displayError,
+        message: state.errorReducer.errorMessage
+    };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(ErrorMessage);

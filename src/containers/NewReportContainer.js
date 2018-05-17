@@ -3,10 +3,10 @@ import NewReport from '../components/NewReport.js';
 import { postReport } from '../actions';
 
 const mapStateToProps = (state) => {
-  return {
-      quakeId: state.reportsReducer.quakeId,
-      userName: state.loginReducer.userName
-  };
+    return {
+        quakeId: state.reportsReducer.quakeId,
+        userName: state.loginReducer.userName
+    };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,6 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(NewReport);

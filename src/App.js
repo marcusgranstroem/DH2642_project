@@ -9,14 +9,14 @@ import './css/App.css';
 class App extends Component {
 
     render() {
-	return (
-	  <div className="App">
-		<BannerContainer/>
-		<MapContainer/>
-        <SearchSnackContainer/>
-        <ErrorMessageContainer/>
-	  </div>
-	);
+    	return (
+    	  <div className="App">
+    		<BannerContainer/>
+    		<MapContainer/>
+            <SearchSnackContainer/>
+            <ErrorMessageContainer/>
+    	  </div>
+    	);
     }
 }
 

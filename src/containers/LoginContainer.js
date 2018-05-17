@@ -3,9 +3,9 @@ import Login from '../components/Login.js';
 import { handleLogin, errorLogin } from '../actions.js';
 
 const mapStateToProps = (state) => {
-  return {
-	quakes: state.earthquakeReducer.earthquakes
-  };
+    return {
+        quakes: state.earthquakeReducer.earthquakes
+    };
 };
 
 const mapDispatchToProps = (dispatch) => ({
