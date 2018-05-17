@@ -5,6 +5,7 @@ import {List} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import NewReportContainer from '../containers/NewReportContainer.js';
 import PropTypes from 'prop-types';
+import LoginContainer from '../containers/LoginContainer.js';
 
 const uuidv1 = require('uuid/v1');
 
@@ -23,19 +24,30 @@ export default class Reports extends React.Component {
     };
 
     render() {
-        const actions = [
-            <FlatButton label="Close"
-                        secondary={true}
-                        onClick={() => {this.props.close(); this.handleSubmit();}}
-                        />,
-            <FlatButton label="Write New"
-                        primary={true}
-                        onClick={this.handleWriting}
-	                disabled={this.state.writing || !this.props.isLoggedIn}
-                        />,
-        ];
 
-        const reports = [];
+        var actions;
+        if(this.props.isLoggedIn)
+            actions = [
+                <FlatButton label="Close"
+                            secondary={true}
+                            onClick={() => {this.props.close(); this.handleSubmit();}}
+                            />,
+                <FlatButton label="Write New"
+                            primary={true}
+                            onClick={this.handleWriting}
+                        disabled={this.state.writing || !this.props.isLoggedIn}
+                            />,
+            ];
+        else
+            actions = [
+                <FlatButton label="Close"
+                            secondary={true}
+                            onClick={() => {this.props.close(); this.handleSubmit();}}
+                            />,
+                <LoginContainer/>,
+            ];
+
+        var reports = [];
 
         if (!this.props.reports) //Check if there are no Reports
             reports.push(<p>No user reports yet.</p>);

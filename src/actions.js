@@ -117,7 +117,7 @@ export function fetchEarthquakes(start=0, end=0, magnitude=0) {
   	    magnitude = 0;
   	}
 
-    if(magnitude > 10) [
+    if(magnitude > 10) {
         dispatch(invalidateEarthquakes({
             error: "Magnitude Error",
             details: "Magnitude set to a value larger than 10."
