@@ -40,24 +40,23 @@ export default class Beamer extends React.Component {
     render() {
 	return (
 	    <div className="Beamer">
-	      <img src={logo} onClick={this.handleClick} className="Beamer-sign" alt="beamer" style={{
-		       position: 'absolute',
-		       width: this.props.magnitude,
-		       height: this.props.magnitude,
-		       left: -this.props.magnitude / 2,
-		   top: -this.props.magnitude / 2}}
-		   />
-              <Popover
-            		open={this.state.open}
-            		anchorEl={this.state.anchorEl}
-            		anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-            		targetOrigin={{horizontal: 'left', vertical: 'top'}}
-            		onRequestClose={this.handleRequestClose}
-            		animation={PopoverAnimationVertical}
-            		>
-		<EarthquakeInfoContainer quakeId={this.props.id} close={this.handleRequestClose}/>
-              </Popover>
-
+  	        <img src={logo} onClick={this.handleClick} className="Beamer-sign" alt="beamer" style={{
+  	            position: 'absolute',
+  		    width: this.props.magnitude,
+  		    height: this.props.magnitude,
+  		    left: -this.props.magnitude / 2,
+  		    top: -this.props.magnitude / 2}}
+  	        />
+                <Popover
+                    open={this.state.open}
+                    anchorEl={this.state.anchorEl}
+                    anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                    targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                    onRequestClose={this.handleRequestClose}
+                    animation={PopoverAnimationVertical}
+                >
+                    <EarthquakeInfoContainer quakeId={this.props.id} close={this.handleRequestClose}/>
+                </Popover>
 	    </div>
 	);
     }

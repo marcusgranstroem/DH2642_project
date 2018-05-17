@@ -1,12 +1,13 @@
-import React from 'react';
 import Dialog from 'material-ui/Dialog';
+import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
 import {List} from 'material-ui/List';
-import Divider from 'material-ui/Divider';
+import LoginContainer from '../containers/LoginContainer.js';
 import NewReportContainer from '../containers/NewReportContainer.js';
 import PropTypes from 'prop-types';
-import LoginContainer from '../containers/LoginContainer.js';
+import React from 'react';
 
+// Unique ids
 const uuidv1 = require('uuid/v1');
 
 export default class Reports extends React.Component {
@@ -18,32 +19,31 @@ export default class Reports extends React.Component {
     handleWriting = () => {
         this.setState({writing: true});
     };
-
+    
     handleSubmit = (text) => {
         this.setState({writing: false});
     };
-
+    
     render() {
-
         var actions;
         if(this.props.isLoggedIn)
             actions = [
                 <FlatButton label="Close"
-                            secondary={true}
-                            onClick={() => {this.props.close(); this.handleSubmit();}}
-                            />,
+                    secondary={true}
+                    onClick={() => {this.props.close(); this.handleSubmit();}}
+                />,
                 <FlatButton label="Write New"
-                            primary={true}
-                            onClick={this.handleWriting}
-                        disabled={this.state.writing || !this.props.isLoggedIn}
-                            />,
+                    primary={true}
+                    onClick={this.handleWriting}
+                    disabled={this.state.writing || !this.props.isLoggedIn}
+                />,
             ];
         else
             actions = [
                 <FlatButton label="Close"
-                            secondary={true}
-                            onClick={() => {this.props.close(); this.handleSubmit();}}
-                            />,
+                    secondary={true}
+                    onClick={() => {this.props.close(); this.handleSubmit();}}
+                />,
                 <LoginContainer/>,
             ];
 
@@ -63,11 +63,11 @@ export default class Reports extends React.Component {
 
                     reports.push(
                         <div key={uuidv1()} className="Post">
-                        <h3>
-                            {v[key]['nickName'] + " " + date + " " + time}
-                        </h3>
-                        {<p>{v[key]['comment']}</p>}
-                          <Divider/>
+                            <h3>
+                                {v[key]['nickName'] + " " + date + " " + time}
+                            </h3>
+                            {<p>{v[key]['comment']}</p>}
+                            <Divider/>
                         </div>
                     );
                 }
@@ -76,25 +76,24 @@ export default class Reports extends React.Component {
         if (this.state.writing)
             reports.push(
                 <div key={uuidv1()}>
-                  <NewReportContainer
-                             submitNew={this.handleSubmit}/>
-                  <Divider/>
+                    <NewReportContainer submitNew={this.handleSubmit}/>
+                    <Divider/>
                 </div>
             );
 
         return (
             <Dialog
-                    className="User-reports"
-                    title="User Reports"
-                    actions={actions}
-                    modal={true}
-                    open={this.props.open}
-                    autoScrollBodyContent={true}
-                    titleClassName="User-reports-title"
-                    >
-              <List>
-                {reports}
-              </List>
+                className="User-reports"
+                title="User Reports"
+                actions={actions}
+                modal={true}
+                open={this.props.open}
+                autoScrollBodyContent={true}
+                titleClassName="User-reports-title"
+            >
+                <List>
+                    {reports}
+                </List>
             </Dialog>
         );
     }
